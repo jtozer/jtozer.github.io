@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link rel='stylesheet' href='../lib/cupertino/jquery-ui.min.css' />
+<link href='../fullcalendarRSU71.css' rel='stylesheet' />
+<link href='../fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='../lib/moment.min.js'></script>
+<script src='../lib/jquery.min.js'></script>
+<script src='../fullcalendar.min.js'></script>
+<script src='../gcal.js'></script>
+<script>
+
+	$(document).ready(function() {
+	
+		$('#calendar').fullCalendar({
+			theme: true,
+			defaultView: 'list', 
+			duration: { days: 31 },
+			displayEventEnd: false,
+			height: 450,
+			header: {
+				left: '',
+				center: 'title',
+				right: 'prev,next'
+			},
+			
+			
+	
+			 visibleRange: function(currentDate) {
+        return {
+            start: currentDate.clone().subtract(0, 'days'),
+            end: currentDate.clone().add(31, 'days') // exclusive end, so 3
+        };
+    },
+					
+			listTime: false, // don't show the time column in list view
+			 
+		googleCalendarApiKey: 'AIzaSyAl1DcZVLmoviZchn0Owv__DgmyhfizTEE',
+		timezone: 'America/New_York',
+	
+    		eventSources: [            
+			{
+				//District Yearly Calendar
+                googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com',
+				color: '#003965', //Blue
+				textColor: 'white'
+				
+			},
+			
+			{
+				//District Calendar
+                googleCalendarId: 'rsu71.org_g6thhnlhjs5e7m5danu7p5u8go@group.calendar.google.com',
+				color: '#003965', //Blue
+				textColor: 'white'
+				
+			},		
+	
+			
+	],
+					
+			eventClick: function(event) {
+				// opens events in a popup window
+				window.open(event.url, 'gcalevent', 'width=700,height=600');
+				return false;
+	
+			},
+			eventRender: function(event, element, view) { 
+				if (view.name === "list"){
+					if (event.location) {
+						element.find('.fc-title, .fc-list-item-title').append(
+							"<br/><b>Location: </b>" + event.location);
+					}
+					if (event.description) {
+						element.find('.fc-title, .fc-list-item-title').append(
+							"<br/><b>Details: </b>" + event.description);
+					}
+				}
+			},	
+     	 
+			loading: function(bool) {
+				$('#loading').toggle(bool);
+			}
+			
+		});
+		
+	});
+
+</script>
+<style>
+
+
+	#loading {
+		display: none;
+		position: absolute;
+		
+	}
+
+	#calendar {
+		max-width: 300px;
+		margin: 0 auto;
+		
+	}
+
+</style>
+</head>
+<body>
+
+
+	<div id='loading'>loading...</div>
+
+	<div id='calendar'></div><br>
+	
+</body>
+</html>
