@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link rel='stylesheet' href='../lib/smoothness/jquery-ui.min.css' />
+<link href='../fullcalendar.css' rel='stylesheet' />
+<link href='../fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href='../jquery.qtip.min.css' rel='stylesheet' />
+<script src='../lib/moment.min.js'></script>
+<script src='../lib/jquery.min.js'></script>
+<script src='../lib/jquery.qtip.min.js'></script>
+<script src='../fullcalendar.min.js'></script>
+<script src='../gcal.js'></script>
+<script>
+	var events = 
+		
+			{
+				Holiday: {//Holiday
+                googleCalendarId: 'en.usa#holiday@group.v.calendar.google.com',
+				color: '#003965', //blue
+				textColor: 'white'				
+				
+			},
+			
+            	districtSchool: {//Common district wide events
+                googleCalendarId: 'rsu71.org_jl49e0n0n338g75cargue46j0o@group.calendar.google.com',
+				color: '#003965', //blue
+				textColor: 'white'
+				
+			},
+				District: {//District Calendar
+                googleCalendarId: 'rsu71.org_g6thhnlhjs5e7m5danu7p5u8go@group.calendar.google.com',
+				color: '#003965', //blue
+				textColor: 'white'	
+			},
+						
+				BAHS: {//BAHS/BCOPE Calendar
+                googleCalendarId: 'rsu71.org_gcagej5jlmnv3jc4ppi3s0t168@group.calendar.google.com',
+				goolgeCalendarId: 'tmtoigt39vhpnffqkeercboo8qlvqkej@import.calendar.google.com',
+				color: '#0089D0', //ltBlue
+				textColor: 'white'
+			},
+			
+				BAHSSports: {//BAHS Sports Calendar
+                googleCalendarId: 'tmtoigt39vhpnffqkeercboo8qlvqkej@import.calendar.google.com',
+				color: '#0089D0', //ltBlue
+				textColor: 'white'
+			},			
+			
+				CASS: {//CASS Calendar
+                googleCalendarId: 'rsu71.org_qh1t039gjes83qjjicp0mdogpo@group.calendar.google.com',
+				color: '#762A83', //Purple
+				textColor: 'white'
+			},
+			
+			
+				EB: {//East Belfast Calendar
+                googleCalendarId: 'rsu71.org_d7snk630tsdh8o58u1djukb92k@group.calendar.google.com',
+				color: '#CC004C', //Pink
+				textColor: 'white'
+			},
+			
+			
+				Nickerson: {//Nickerson Calendar
+                googleCalendarId: 'rsu71.org_riksg926job8cd5uqolhgftes4@group.calendar.google.com',
+				color: '#8c510a', //Brown
+				textColor: 'white'
+				
+			},
+			
+			
+				Tritown: {//Tritown Calendar
+                googleCalendarId: 'rsu71.org_0uv37i08ua0qilaljo9rqnk408@group.calendar.google.com',
+				color: '#ff6000', //Orange
+				textColor: '#fff'
+			},
+			
+			
+				THMS: {//THMS Calendar
+                googleCalendarId: 'rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com',
+				color: '#1b7837', //Green
+				textColor: 'white'
+			}
+        }
+
+	$(document).ready(function() {
+    $('#calendar').fullCalendar({
+		theme:true,
+		firstDay: 0,
+		height: 'auto',
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay,listMonth'
+			},
+        googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
+		
+	eventClick: function(event) {
+				// opens events in a popup window
+				window.open(event.url, 'gcalevent', 'width=700,height=600');
+				return false;}
+		
+	
+	})	
+
+   $('#calendar').fullCalendar('addEventSource', events.Holiday);
+   $('#calendar').fullCalendar('addEventSource', events.districtSchool);
+  $('#calendar').fullCalendar('addEventSource', events.District);
+  //$('#calendar').fullCalendar('addEventSource', events.BAHSSports);
+  //$('#calendar').fullCalendar('addEventSource', events.CASS);
+  //$('#calendar').fullCalendar('addEventSource', events.EB);
+  //$('#calendar').fullCalendar('addEventSource', events.Nickerson);
+  //$('#calendar').fullCalendar('addEventSource', events.Tritown);
+  //$('#calendar').fullCalendar('addEventSource', events.THMS);
+
+  $(':checkbox').on('click', function(){
+    if( $(this).is(':checked') ){
+      $('#calendar').fullCalendar('addEventSource', events[$(this).attr('id').replace('cal','')]);
+    }
+    else{
+      $('#calendar').fullCalendar('removeEventSource', events[$(this).attr('id').replace('cal','')]);
+    }
+  });
+  $('html, body').animate(
+    {
+    scrollTop: parseInt($('main').offset().top - 40)
+    }, 'fast', function(){
+      $('#calendar').find('a').attr('target','_blank');
+      $('jp-loading').removeClass('load');
+    }
+  );
+
+
+//End Calendar
+});
+
+</script>
+<style>
+
+	body {
+		margin: 10px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;	
+	}
+		
+	  #responsive-wrapper {
+        width:100%;
+        margin 0 auto;
+	}
+
+	#calendar {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	@media print {
+		input#btnPrint {
+		display: none; 
+		}
+		}
+	
+</style>
+</head>
+<body>
+
+	<div id='responsive-wrapper'></div>
+	
+	<table>
+	<tbody>
+		<tr>
+			<td style="color:#ffffff;background:#003965;width:150px;height:30px;border:none;font-size:16px;font-family:verdana;"><input type="checkbox" id="calDistrict" checked> District</td>
+			<td style="color:#ffffff;background:#0089D0;width:150px;height:30px;border:none;font-size:16px;font-family:verdana;"><input type="checkbox" id="calBAHS"> BAHS</td>
+			<td style="color:#ffffff;background:#762A83;width:150px;height:30px;border:none;font-size:16px;font-family:verdana;"><input type="checkbox" id="calCASS"> CASS</td>
+			<td style="color:#ffffff;background:#CC004C;width:150px;height:30px;border:none;font-size:16px;font-family:verdana;"><input type="checkbox" id="calEB"> East Belfast</td>
+			<td style="color:#ffffff;background:#8c510a;width:150px;height:30px;border:none;font-size:16px;font-family:verdana;"><input type="checkbox" id="calNickerson"> Nickerson</td>
+			<td style="color:#ffffff;background:#ff6000;width:150px;height:30px;border:none;font-size:16px;font-family:verdana;"><input type="checkbox" id="calTritown"> Tritown</td>
+			<td style="color:#ffffff;background:#1b7837;width:150px;height:30px;border:none;font-size:16px;font-family:verdana;"><input type="checkbox" id="calTHMS"> THMS</td>
+		</tr>
+	</tbody>
+</table>	
+<br><br>
+	<div id='calendar'></div><br>
+	<input type="button" id="btnPrint" onclick="window.print();" value="Print Calendar" />
+	
+
+
+</body>
+</html>

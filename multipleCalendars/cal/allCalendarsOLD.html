@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link rel='stylesheet' href='../lib/smoothness/jquery-ui.min.css' />
+<link href='../fullcalendar.css' rel='stylesheet' />
+<link href='../fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href='../jquery.qtip.min.css' rel='stylesheet' />
+<script src='../lib/moment.min.js'></script>
+<script src='../lib/jquery.min.js'></script>
+<script src='../lib/jquery.qtip.min.js'></script>
+<script src='../fullcalendar.min.js'></script>
+<script src='../gcal.js'></script>
+<script>
+
+	$(document).ready(function() {
+    $('#calendar').fullCalendar({
+		theme:true,
+		firstDay: 0,
+		height: 'auto',
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay,listMonth'
+			},
+        googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
+        eventSources: [
+		
+			{
+				//Holiday
+                googleCalendarId: 'en.usa#holiday@group.v.calendar.google.com',
+				color: '#ffffff', //blue
+				textColor: 'blue'
+			},
+			
+            {
+				//District Calendar
+                googleCalendarId: 'rsu71.org_g6thhnlhjs5e7m5danu7p5u8go@group.calendar.google.com',
+				color: '#003965', //blue
+				textColor: 'white'
+			},
+			
+			{
+				//BAHS/BCOPE Calendar
+                googleCalendarId: 'rsu71.org_gcagej5jlmnv3jc4ppi3s0t168@group.calendar.google.com',
+				color: '#0089D0', //ltBlue
+				textColor: 'white'
+			},
+			
+			{
+				//CASS Calendar
+                googleCalendarId: 'rsu71.org_qh1t039gjes83qjjicp0mdogpo@group.calendar.google.com',
+				color: '#762A83', //Purple
+				textColor: 'white'
+			},
+			
+			{
+				//East Belfast Calendar
+                googleCalendarId: 'rsu71.org_d7snk630tsdh8o58u1djukb92k@group.calendar.google.com',
+				color: '#CC004C', //Pink
+				textColor: 'white'
+			},
+			
+			{
+				//Nickerson Calendar
+                googleCalendarId: 'rsu71.org_riksg926job8cd5uqolhgftes4@group.calendar.google.com',
+				color: '#8c510a', //Brown
+				textColor: 'white'
+			},
+			
+			{
+				//Tritown Calendar
+                googleCalendarId: 'rsu71.org_0uv37i08ua0qilaljo9rqnk408@group.calendar.google.com',
+				color: '#ff6000', //Orange
+				textColor: '#fff'
+			},
+			
+			{
+				//THMS Calendar
+                googleCalendarId: 'rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com',
+				color: '#1b7837', //Green
+				textColor: 'white'
+			}
+        ],
+		eventClick: function(event) {
+				// opens events in a popup window
+				window.open(event.url, 'gcalevent', 'width=500,height=300');
+				return false;
+			},
+			
+		eventRender: function(event, element) {
+        element.qtip({
+            content: event.title});
+		}
+    });
+});
+
+</script>
+<style>
+
+	body {
+		margin: 10px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 18px;	
+	}
+		
+	  #responsive-wrapper {
+        width:100%;
+        margin 0 auto;
+	}
+
+	#calendar {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	
+
+</style>
+</head>
+<body>
+
+	<div id='responsive-wrapper'></div>
+
+	<div id='calendar'></div>
+
+</body>
+</html>
