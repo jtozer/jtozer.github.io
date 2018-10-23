@@ -54,7 +54,7 @@
 
     gCalFlow.prototype.target = null;
 
-    gCalFlow.prototype.template = $("<div class=\"gCalFlow\">\n  <div class=\"gcf-header-block\">\n    <div class=\"gcf-title-block\">\n      </div>\n  </div>\n  <div class=\"gcf-item-container-block\">\n    <div class=\"gcf-item-block\">\n      <div class=\"gcf-item-header-block\">\n        <div class=\"gcf-item-date-block\">\n          <center>Today is <span class=\"gcf-item-daterange\"></span></center>\n        </div>\n        <div class=\"gcf-item-title-block\">\n          <center><strong class=\"gcf-item-title\"></strong></center>\n        </div>\n      </div>\n      <div class=\"gcf-item-body-block\">\n        <div class=\"gcf-item-description\">\n        </div>\n        <div class=\"gcf-item-location\">\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"gcf-last-update-block\">\n      </div>\n</div>");
+    gCalFlow.prototype.template = $("<div class=\"gCalFlow\">\n  <div class=\"gcf-header-block\">\n    <div class=\"gcf-title-block\">\n      </div>\n  </div>\n  <div class=\"gcf-item-container-block\">\n    <div class=\"gcf-item-block\">\n      <div class=\"gcf-item-header-block\">\n        <div class=\"gcf-item-date-block\">\n          <center><span class=\"gcf-item-daterange\"></span></center>\n        </div>\n        <div class=\"gcf-item-title-block\">\n          <center><strong class=\"gcf-item-title\"></strong></center>\n        </div>\n      </div>\n      <div class=\"gcf-item-body-block\">\n        <div class=\"gcf-item-description\">\n        </div>\n        <div class=\"gcf-item-location\">\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"gcf-last-update-block\">\n      </div>\n</div>");
 
     gCalFlow.prototype.opts = {
       maxitem: 15,
