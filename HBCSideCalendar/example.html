@@ -1,0 +1,70 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css" />
+
+<script type="text/javascript" src="moment.min.js"></script>
+</head>
+
+<body>
+<div class="col-sm-4">
+			<div class="box box-side">
+	<div class="box-title">Event Calendar</div>
+	<span id="CalendarSide"></span>
+
+	<script type="text/javascript" src="plugins.js?m=1417902555"></script><script type="main.min.js?m=1417902555"></script><script type="text/javascript">//<![CDATA[
+(function($) {
+	$(document).ready(function() {
+		var messages = {
+			'EditableTextField1': '\'Your Name\' is required.',
+			'EditableTextField3': '\'Phone\' is required.',
+			'EditableTextField4': '\'Question or Comment\' is required.'
+		};
+
+		$(document).on("click", "input.text[data-showcalendar]", function() {
+			$(this).ssDatepicker();
+
+			if($(this).data('datepicker')) {
+				$(this).datepicker('show');
+			}
+		});
+
+		$("#Form_Form").validate({
+			ignore: ':hidden',
+			errorClass: "required",
+			errorElement: "span",
+			errorPlacement: function(error, element) {
+				error.addClass('message');
+
+				if(element.is(":radio") || element.parents(".checkboxset").length > 0) {
+					error.insertAfter(element.closest("ul"));
+				} else {
+					error.insertAfter(element);
+				}
+			},
+			messages: messages,
+			rules: {
+				
+					
+						'EditableTextField1': {"required":true},
+					
+				
+					
+						'EditableEmailField6': {"required":true,"email":true},
+					
+				
+					
+				
+					
+						'EditableTextField4': {"required":true},
+					
+				
+			},
+			
+		});
+		
+	});
+})(jQuery);
+
+	
+</div>
+</body>
