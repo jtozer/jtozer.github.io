@@ -36,6 +36,7 @@
 				googleCalendarId:'office@hermonbaptistchurch.org',
 				color: '#7dc1ab',
 				textColor: '#ffffff',
+				borderColor: '#69ad97',
 				className: 'gcal-event'
 				},
 			
@@ -53,6 +54,9 @@
 		});
 		
 	});
+	if(window.innerWidth < 800) {
+		$('#calendar').fullCalendar('changeView', 'agendaDay');
+	}
 
 </script>
 
