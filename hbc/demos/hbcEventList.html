@@ -21,22 +21,16 @@
 					prev: 'fa-chevron-left',
 					next: 'fa-chevron-right'
 				},
-			height:900,
+				
+		height: 150,
 			
+						
 			header: {
 						left: '',
-						center: 'prev title next',
+						center: '',
 						right: ''
-						},
+						},					
 						
-		
-			
-			views: {
-				listWeek: {
-					titleFormat: 'MMMM'
-						}
-				},
-	
 			googleCalendarApiKey: 'AIzaSyAzkEQw6GJZvWzVV_YNPYEuz6Q4eXauqQI',
 		
 			
@@ -49,39 +43,25 @@
 				className: 'gcal-event'
 				},
 			
-			defaultView: 'month',
+			defaultView: 'list',
+			duration: { days: 1},
+			displayEventEnd: false,
 			
 			
-		
-		viewRender: function(view,element) {
-							if(view.name=='month'){
-								//month
-							$('.fc-left .fc-button-group,.fc-prev-button, .fc-next-button').show();
-						}else{
-							//listWeek remove buttons
-							$('.fc-left .fc-button-group,.fc-prev-button, .fc-next-button').hide();
-						}
-						},
-	               
+			 visibleRange: function(currentDate) {
+				return {
+					start: currentDate.clone().subtract(1, 'days'),
+					end: currentDate.clone().add(3, 'days') // exclusive end, so 3
+				};
+			},
+			
 			eventClick: function(event) {
 				// opens events in a popup window
 				window.open(event.url, 'gcalevent', 'width=450,height=320');
 				return false;
 			},
-			
-			 eventAfterAllRender: function(view) {
-        if(window.innerWidth < 1000) {
-          $('#calendar').fullCalendar('changeView', 'listWeek');
-        } //IF MOBILE CHANGE VIEW TO LIST WEEK
-      },
 	  
-	 visibleRange: function(currentDate) {
-        return {
-            start: currentDate.clone().subtract(0, 'days'),
-            end: currentDate.clone().add(31, 'days') // exclusive end, so 3
-        };
-    },
-	  			
+	   			
 			loading: function(bool) {
 				$('#loading').toggle(bool);
 			}
@@ -96,21 +76,16 @@
 <style>
 
 	body {
-		margin: 40px 10px;
+		margin: 0px 0px;
 		padding: 0;
 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		font-size: 14px;
-	}
-	
-	.fc-today {
-		background-color: #cde7df;
+		font-size: 12px;
 	}
 	
 	.fc-list-heading {
 		background-color: #7dc1ab;
 		color: #fff;
-		font-size: 1.15em;
-	}
+			}
 	
 	#responsive-wrapper {
         width:100%;
@@ -129,15 +104,18 @@
 		margin: 0 auto;
 		
 	}
+	
+	#externalTitle {
+    border: solid 1px black;
+    padding: 4px;
 
 		}
 </style>
 </head>
-<body>
-
-
+<body style='background-color: #084d46'>
 	<div id='loading'>loading...</div>
 	<div id='responsive-wrapper'></div>
+	<center><font size="14px" color='white'>Today @ HBC</font></center>
 	<div id='calendar'></div><br><br>
 
 	
