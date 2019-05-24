@@ -21,7 +21,11 @@
 	  duration: { days: 21 },
 	  displayEventEnd: false,
 	  height: 460,
-      
+      header: {
+        left: ' ',
+        center: '',
+        right: ''
+      },
 	   visibleRange: function(currentDate) {
         return {
             start: currentDate.clone().subtract(0, 'days'),
