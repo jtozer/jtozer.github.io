@@ -1,6 +1,6 @@
 .fw-gc-feed-item{  
     position:relative;
-    padding: 25px 0;
+    padding: 40px 0;
     padding-left: 97px !important;
     }
  
@@ -9,11 +9,11 @@
     top: 20px;
     left: 10px;
     text-align: center;
-    width: 25px;
-    background: #456d41;
-    height: 20px;
+    width: 50px;
+    background: #ea5a44;
+    height: 30px;
     font-size: 20px;
-    line-height: 21px;
+    line-height: 31px;
     padding: 0 19px;
     color:black;
     /* border: 1px solid; */
@@ -31,8 +31,7 @@
     content:"";
     position:absolute;
     border: 1px solid #ababab;
-    height: 60px;
+    height: 70px;
     left: 0;
     right: 0;
-}
- 
+} 
