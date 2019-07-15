@@ -1,6 +1,6 @@
 .fw-gc-feed-item{  
     position:relative;
-    height: 60px; /* height of all items - event/location/time - orginal used padding: 40px 0; */
+    padding: 60px 0; /* height of all items - event/location/time - orginal used padding: 40px 0; */
     padding-left: 97px !important;
     }
  
@@ -9,7 +9,7 @@
     top: 20px;
     left: 10px;
     text-align: center; 
-    width: 50px; 
+    width: 75px; 
     background: #ea5a44;
     height: 30px;
     font-size: 20px;
