@@ -146,6 +146,7 @@ font-size: 16px;
 background: #52ca1d;
 padding: 6px;
 display: inline-block;
+word-wrap: break-word; /* new line */
 color: white;
 width: 80px;
 text-transform: uppercase;
