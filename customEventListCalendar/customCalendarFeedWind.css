@@ -8,8 +8,8 @@
     position: absolute;
     top: 20px;
     left: 10px;
-    text-align: left; /* center */
-    width: 30px; /* 50px */
+    text-align: center; 
+    width: 50px; 
     background: #ea5a44;
     height: 30px;
     font-size: 20px;
