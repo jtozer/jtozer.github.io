@@ -7,7 +7,7 @@
 .fw-gc-feed-item-date-only{
     position: absolute;
     top: 20px;
-    left: 10px;
+    left: 0px;
     text-align: center;
     width: 50px;
     background: #ea5a44;
@@ -15,7 +15,7 @@
     font-size: 20px;
     line-height: 31px;
     padding: 0 19px;
-    color:blue;
+    color:black;
     /* border: 1px solid; */
 }
 .fw-gc-feed-item-date-only::first-line{
