@@ -175,6 +175,6 @@ color: #929ba3;
 overflow: hidden;
 text-overflow: ellipsis;
 display: inline-table;
-float: right;
+float: left; /* right */
 margin-top: -125px;
 }
