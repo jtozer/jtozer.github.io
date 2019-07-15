@@ -21,6 +21,7 @@
 .fw-gc-feed-item-date-only::first-line{
     color:white;
     text-transform: uppercase;
+    word-wrap: break-word;
 }
  
 .fw-gc-feed-item-date .fa {
