@@ -32,12 +32,12 @@
     content:"";
     position:absolute;
     border: 1px solid #ababab;
-    height: 75px; /* 70px */
+    height: 70px; /* 70px */
     left: 0;
     right: 0;
 }
 
 .fw-gc-feed-item-date {
 padding: 5px 20px 0 20px;
-height: 200px;
+height: 70px;
 
