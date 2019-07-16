@@ -20,6 +20,7 @@
 }
 .fw-gc-feed-item-date-only::first-line{
     color:white;
+    text-transform: uppercase;
 }
  
 .fw-gc-feed-item-date .fa {
