@@ -1,6 +1,6 @@
 .fw-gc-feed-item{  
     position:relative;
-    padding: 60px 0; /* height of all items - event/location/time - orginal used padding: 40px 0; */
+    padding: 40px 0;
     padding-left: 97px !important;
     }
  
@@ -8,19 +8,18 @@
     position: absolute;
     top: 20px;
     left: 10px;
-    text-align: center; 
-    width: 49px; 
+    text-align: center;
+    width: 50px;
     background: #ea5a44;
     height: 30px;
     font-size: 20px;
     line-height: 31px;
-    padding: 0 5; /* 0 19px */
+    padding: 0 19px;
     color:black;
     /* border: 1px solid; */
 }
 .fw-gc-feed-item-date-only::first-line{
     color:white;
-    text-transform: uppercase;
 }
  
 .fw-gc-feed-item-date .fa {
@@ -35,4 +34,4 @@
     height: 70px;
     left: 0;
     right: 0;
-} 
+}
