@@ -2,7 +2,7 @@
     position:relative;
     padding: 25px 0; /* 40px 0; Item postion relative to date box - 25px moves the items up */
     padding-left: 90px; !important; /* 97px Items to right of the date box 0px puts items behind adjust the left padding as needed */
-    padding-bottom: 60px;
+    padding-bottom: 15px;
        
     }
  
@@ -20,7 +20,6 @@
     padding: 0 19px;  
     color:black;
     text-transform: uppercase; /* added */
-    padding-bottom: 30px;
     /* border: 1px solid; */
 }
 .fw-gc-feed-item-date-only::first-line{
