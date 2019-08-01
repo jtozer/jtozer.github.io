@@ -1,26 +1,25 @@
 .fw-gc-feed-item{  
     position:relative;
-    padding: 25px 0; /* 40px 0 */
+    padding: 40px 0;
     padding-left: 97px !important;
     }
  
 .fw-gc-feed-item-date-only{
     position: absolute;
     top: 20px;
-    left: 10px; /* moves whole date block left or right */
+    left: 10px;
     text-align: center;
-    width: 47px;
+    width: 50px;
     background: #ea5a44;
     height: 30px;
     font-size: 20px;
     line-height: 31px;
-    padding: 0 5px 0 10px; /* 0 19px */
+    padding: 0 19px;
     color:black;
     /* border: 1px solid; */
 }
 .fw-gc-feed-item-date-only::first-line{
     color:white;
-    text-transform: uppercase;
 }
  
 .fw-gc-feed-item-date .fa {
@@ -32,9 +31,7 @@
     content:"";
     position:absolute;
     border: 1px solid #ababab;
-    height: 70px; /* 70px */
+    height: 70px;
     left: 0;
     right: 0;
 }
-
-
