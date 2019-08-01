@@ -1,6 +1,6 @@
 .fw-gc-feed-item{  
     position:relative;
-    padding: 40px 0;
+    padding: 25px 0; /* 40px Item postion relative to date box - 25px moves the items up */
     padding-left: 0 !important; /* 97px */
     }
  
