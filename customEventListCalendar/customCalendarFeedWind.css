@@ -20,6 +20,7 @@
     padding: 0 19px;  
     color:black;
     text-transform: uppercase; /* added */
+    padding-bottom: 30px;
     /* border: 1px solid; */
 }
 .fw-gc-feed-item-date-only::first-line{
