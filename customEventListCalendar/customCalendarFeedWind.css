@@ -1,7 +1,7 @@
 .fw-gc-feed-item{  
     position:relative;
     padding: 40px 0;
-    padding-left: 97px !important;
+    padding-left: 0 !important; /* 97px */
     }
  
 .fw-gc-feed-item-date-only{
