@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset='utf-8' />
-<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.css' rel='stylesheet' />
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<link href='../packages/core/main.css' rel='stylesheet' />
 <link href='../packages/daygrid/main.css' rel='stylesheet' />
 <link href='../packages/list/main.css' rel='stylesheet' />
 <script src='../packages/core/main.js'></script>
@@ -18,9 +19,9 @@
 
       plugins: [ 'dayGrid', 'list', 'googleCalendar', ],
 	    header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'dayGridMonth,listYear'
+        left: 'title',
+        center: 'dayGridMonth,listMonth',
+        right: 'prev, next today'
       },
 
       displayEventTime: false, // don't show the time column in list view
@@ -68,10 +69,66 @@
     top: 10px;
     right: 10px;
   }
+
+.fc-event {
+  position: relative;
+  /* for resize handle and other inner positioning */
+  display: block;
+  /* make the <a> tag block */
+  font-size: .85em;
+  padding: 3px 0 3px 0;
+  font-family: 'PT Sans', sans-serif;
+  }
+
+ 
+ 
+.fc th {
+	font-family: 'PT Sans', sans-serif;
+    background: #79a17a !important;
+	color:#FFF;
+	padding: 10px;
+	font-size:14px !important;
+
+}
+
+.fc-button-primary {
+  color: #456d41;
+  background-color: #fff !important;
+  border-color: #456d41; 
+  border-width: 2px;
+  }
+
+ .fc-button-primary:hover {
+  color: #456d41;
+  background-color: #fff;
+  border-color: #456d41; 
+  border-width: 2px;
+  }
   
+  .fc-button-primary:disabled {
+  color: #79a17a;
+  background-color: #fff;
+  border-color: #79a17a; 
+  border-width: 2px;
+  }
+
+.fc-button-primary:not(:disabled):active,
+.fc-button-primary:not(:disabled).fc-button-active {
+  color: #79a17a;
+  background-color: #fff;
+  border-color: #79a17a; 
+  }
+ 
+ .fc-toolbar h2 {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 2.1em;
+  font-weight: 200;
+  margin: 0; }
+
+
 
   #calendar {
-    max-width: 900px;
+    width: 900px;
     margin: 0 auto;
   }
 

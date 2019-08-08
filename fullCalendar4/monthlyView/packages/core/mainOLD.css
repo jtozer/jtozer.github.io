@@ -1,9 +1,8 @@
 /*!
-FullCalendar Core Package v4.2.0
+FullCalendar Core Package v4.1.0
 Docs & License: https://fullcalendar.io/
 (c) 2019 Adam Shaw
 */
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
 .fc {
   direction: ltr;
   text-align: left; }
@@ -607,7 +606,10 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
   color: #212529;
   text-decoration: none; }
 
-
+.fc-button:focus {
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25); }
 
 .fc-button:disabled {
   opacity: 0.65; }
@@ -623,6 +625,9 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
   background-color: #1e2b37;
   border-color: #1a252f; }
 
+.fc-button-primary:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5); }
 
 .fc-button-primary:disabled {
   color: #fff;
@@ -635,7 +640,10 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
   background-color: #1a252f;
   border-color: #151e27; }
 
-
+.fc-button-primary:not(:disabled):active:focus,
+.fc-button-primary:not(:disabled).fc-button-active:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(76, 91, 106, 0.5); }
 
 /* icons within buttons */
 .fc-button .fc-icon {
