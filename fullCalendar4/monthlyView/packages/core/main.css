@@ -3,7 +3,7 @@ FullCalendar Core Package v4.2.0
 Docs & License: https://fullcalendar.io/
 (c) 2019 Adam Shaw
 */
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+
 .fc {
   direction: ltr;
   text-align: left; }
@@ -695,7 +695,7 @@ Lots taken from Flatly (MIT): https://bootswatch.com/4/flatly/bootstrap.css
   align-items: center; }
 
 .fc-toolbar.fc-header-toolbar {
-  margin-bottom: 1.5em;  }
+  margin-bottom: 1.5em; }
 
 .fc-toolbar.fc-footer-toolbar {
   margin-top: 1.5em; }
