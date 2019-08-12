@@ -89,7 +89,7 @@ margin-right: 1.5em;  }
  
 .fc th {
 	font-family: 'PT Sans', sans-serif;
-    background: #79a17a !important;
+    background: #a1788d !important;
 	color:#FFF;
 	padding: 0;
 	line-height: 3em;
