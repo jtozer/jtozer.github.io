@@ -32,7 +32,7 @@
 .fw-gc-feed-item-date-only::before{
     content:"";
     position:absolute;
-    border: 1px solid #eaeaea;
+    border: 1px solid #ea9999;
     height: 70px;
     left: 0;
     right: 0;
