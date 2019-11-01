@@ -10,7 +10,7 @@
     left: 10px;
     text-align: center;
     width: 40px; /* 50px width of date box*/ 
-    background: #ea5a44; /* top part of date box where just month is listed */
+    background: #9b9b9b; /* top part of date box where just month is listed #ea5a44 */
     height: 30px;
     font-size: 20px;
     line-height: 31px;
