@@ -10,7 +10,7 @@
     left: 10px;
     text-align: center;
     width: 40px; /* 50px width of date box*/ 
-    background: #fff2cc; /* top part of date box where just month is listed #ea5a44 */
+    background: #ea9999; /* top part of date box where just month is listed #ea5a44 */
     height: 30px;
     font-size: 20px;
     line-height: 31px;
@@ -32,7 +32,7 @@
 .fw-gc-feed-item-date-only::before{
     content:"";
     position:absolute;
-    border: 1px solid #ea9999;
+    border: 1px solid #eaeaea;
     height: 70px;
     left: 0;
     right: 0;
