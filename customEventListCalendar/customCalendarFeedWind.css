@@ -5,7 +5,7 @@
     }
  
 .fw-gc-feed-item-date-only{
-    text-transform: uppercase; /* added */
+    /* text-transform: uppercase; */ /* added */
     position: absolute;
     top: 20px;
     left: 10px;
