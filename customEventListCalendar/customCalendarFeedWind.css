@@ -5,6 +5,7 @@
     }
  
 .fw-gc-feed-item-date-only{
+    text-transform: uppercase; /* added */
     position: absolute;
     top: 20px;
     left: 10px;
@@ -16,7 +17,6 @@
     line-height: 31px;
     padding: 0 19px;
     color:black;
-    text-transform: uppercase; /* added */
     /* border: 1px solid; */
 }
 .fw-gc-feed-item-date-only::first-line{
