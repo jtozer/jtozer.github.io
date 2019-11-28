@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<link href='../packages/core/main.css' rel='stylesheet' />
+<link href='../packages/daygrid/main.css' rel='stylesheet' />
+<link href='../packages/list/main.css' rel='stylesheet' />
+<script src='../packages/core/main.js'></script>
+<script src='../packages/daygrid/main.js'></script>
+<script src='../packages/list/main.js'></script>
+<script src='../packages/google-calendar/main.js'></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+
+      plugins: [ 'dayGrid', 'list', 'googleCalendar', ],
+	    header: {
+        left: 'title',
+        center: '',
+        right: 'prev, next today'
+      },
+
+      displayEventTime: false, // don't show the time column in list view
+     
+      googleCalendarApiKey: 'AIzaSyAl1DcZVLmoviZchn0Owv__DgmyhfizTEE',
+
+      // RSU 71 Events Calendar
+      events: {
+				googleCalendarId: 'rsu71.org_g6thhnlhjs5e7m5danu7p5u8go@group.calendar.google.com',
+				color: '#03a9f3'
+				
+			},
+
+      eventClick: function(arg) {
+        // opens events in a popup window
+        window.open(arg.event.url, 'google-calendar-event', 'width=700,height=600');
+
+        arg.jsEvent.preventDefault() // don't navigate in main tab
+      },
+
+      loading: function(bool) {
+        document.getElementById('loading').style.display =
+          bool ? 'block' : 'none';
+      }
+
+    });
+    calendar.setOption('height', 'auto');
+    calendar.render();
+  });
+
+</script>
+<style>
+
+  body {
+  
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+	
+  }
+
+  #loading {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+.fc-toolbar.fc-header-toolbar {
+margin-right: 1.5em;  }
+	
+.fc-event {
+  position: relative;
+  /* for resize handle and other inner positioning */
+  display: block;
+  /* make the <a> tag block */
+  font-size: .75em;
+  padding: 3px 0;
+  font-family: 'PT Sans', sans-serif;
+  line-height: 1.6;
+  border-radius: 0px;
+  border: 1px solid #456d41;
+  }
+
+ 
+ 
+.fc th {
+	font-family: 'PT Sans', sans-serif;
+    background: #003965 !important;
+	color:#FFF;
+	padding: 0;
+	line-height: 3em;
+	font-size:14px !important;
+	border-width: 0px;
+
+}
+
+.fc-button-primary {
+  color: #003965;
+  background-color: #fff !important;
+  border-color: #003965; 
+  border-width: 1px;
+  margin-top: 15px;
+  
+  }
+
+ .fc-button-primary:hover {
+  color: #003965;
+  background-color: #fff;
+  border-color: #003965; 
+  border-width: 1px;
+  }
+  
+  .fc-button-primary:disabled {
+  color: #003965;
+  background-color: #fff;
+  border-color: #003965; 
+  border-width: 1px;
+  }
+
+.fc-button-primary:not(:disabled):active,
+.fc-button-primary:not(:disabled).fc-button-active {
+  color: #003965;
+  background-color: #fff;
+  border-color: #003965; 
+  }
+ 
+ .fc-toolbar h2 {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 2.1em;
+  font-weight: 200;
+  margin: 0; 
+  color:#555;
+  padding: 15px 15px 0 15px;}
+
+/*.fc-day-grid-event .fc-content{ white-space: normal!important; }*/
+
+  #calendar {
+    margin: 0 auto;
+	max-width: 100%;
+
+  }
+
+</style>
+</head>
+<body>
+
+  <div id='loading'>loading...</div>
+
+  <div id='calendar'></div>
+  
+
+
+</body>
+</html>
