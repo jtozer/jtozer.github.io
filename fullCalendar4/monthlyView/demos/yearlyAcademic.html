@@ -27,65 +27,12 @@
      
       googleCalendarApiKey: 'AIzaSyAl1DcZVLmoviZchn0Owv__DgmyhfizTEE',
 
-      // All District/School Events
-      eventSources: [
-			{
-				//District Events
-				googleCalendarId: 'rsu71.org_g6thhnlhjs5e7m5danu7p5u8go@group.calendar.google.com',
-				color: '#00b9c0'
+      // RSU 71 Events Calendar
+      events: {
+				googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com',
+				color: '#03a9f3'
 				
 			},
-			{
-				//BAHS
-				googleCalendarId: 'rsu71.org_gcagej5jlmnv3jc4ppi3s0t168@group.calendar.google.com', 
-				color: '#0089D0', //ltBlue
-				textColor: 'white'
-			},
-			{
-				//BAHS Sports
-				googleCalendarId: 'olrmpn54rfbff11c0a6giirco40iruhq@import.calendar.google.com', 
-				color: '#0089D0', //ltBlue
-				textColor: 'white'
-			},
-			{
-				//CASS Calendar
-                googleCalendarId: 'rsu71.org_qh1t039gjes83qjjicp0mdogpo@group.calendar.google.com',
-				color: '#ff6000', //Orange
-				textColor: 'white'
-			},
-			
-			{
-				//East Belfast Calendar
-                googleCalendarId: 'rsu71.org_d7snk630tsdh8o58u1djukb92k@group.calendar.google.com',
-				color: '#1b7837', //Green
-				textColor: 'white'
-			},
-			
-			{	
-				//Nickerson Calendar
-                googleCalendarId: 'rsu71.org_riksg926job8cd5uqolhgftes4@group.calendar.google.com',
-				color: '#CC004C', //Pink
-				textColor: 'white'
-				
-			},
-			
-			{
-				//Tritown Calendar
-                googleCalendarId: 'rsu71.org_0uv37i08ua0qilaljo9rqnk408@group.calendar.google.com',
-				color: '#762a83', //Purple
-				textColor: '#fff'
-			},
-			
-			{
-				//THMS Calendar
-                googleCalendarId: 'rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com',
-				color: '#BF9200', //Gold
-				textColor: 'white'
-			}
-			
-			
-			
-			],
 
       eventClick: function(arg) {
         // opens events in a popup window
@@ -100,13 +47,8 @@
       }
 
     });
-    
-	
-
-	
-	calendar.setOption('height', 'auto');
+    calendar.setOption('height', 'auto');
     calendar.render();
-	
   });
 
 </script>
