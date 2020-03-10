@@ -22,6 +22,13 @@
         center: '',
         right: 'prev, next today'
       },
+	   duration: { days: 21 },
+	   visibleRange: function(currentDate) {
+        return {
+            start: currentDate.clone().subtract(0, 'days'),
+            end: currentDate.clone().add(21, 'days') // exclusive end, so 3
+        };
+    },
 
       displayEventTime: false, // don't show the time column in list view
      
