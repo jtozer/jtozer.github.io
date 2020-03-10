@@ -33,7 +33,7 @@
 		
 		
 
-      displayEventTime: false, // don't show the time column in list view
+      displayEventTime: true, // don't show the time column in list view
      
       googleCalendarApiKey: 'AIzaSyAl1DcZVLmoviZchn0Owv__DgmyhfizTEE',
 
@@ -58,7 +58,7 @@
 
     });
     calendar.setOption('height', 'auto'); 
-    if(window.innerWidth < 400) calendar.changeView('list');
+    if(window.innerWidth < 600) calendar.changeView('list');
 	calendar.render();
   });
 
