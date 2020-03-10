@@ -16,7 +16,7 @@
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
 
-      plugins: [ 'dayGrid', 'listMonth', 'googleCalendar', ],
+      plugins: [ 'dayGrid', 'list', 'googleCalendar', ],
 	    header: {
         left: 'title',
         center: '',
@@ -48,7 +48,7 @@
 
     });
     calendar.setOption('height', 'auto'); 
-    if(window.innerWidth < 800) calendar.changeView('listMonth');
+    if(window.innerWidth < 800) calendar.changeView('list');
 	calendar.render();
   });
 
