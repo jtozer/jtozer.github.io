@@ -22,8 +22,18 @@
         center: '',
         right: 'prev, next today'
       },
+	   duration: { days: 31 },
+	   visibleRange: function(currentDate) {
+        return {
+            start: currentDate.clone().subtract(0, 'days'),
+            end: currentDate.clone().add(30, 'days') // exclusive end, so 3
+        };
+    },
 
-      displayEventTime: false, // don't show the time column in list view
+		
+		
+
+      displayEventTime: true, // don't show the time column in list view
      
       googleCalendarApiKey: 'AIzaSyAl1DcZVLmoviZchn0Owv__DgmyhfizTEE',
 
@@ -47,8 +57,9 @@
       }
 
     });
-    calendar.setOption('height', 'auto');
-    calendar.render();
+    calendar.setOption('height', 'auto'); 
+    if(window.innerWidth < 600) calendar.changeView('list');
+	calendar.render();
   });
 
 </script>
