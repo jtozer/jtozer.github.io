@@ -131,6 +131,7 @@
 		
 	
 	})	
+	
 
 
   $('#calendar').fullCalendar('addEventSource', events.districtSchool);
@@ -157,17 +158,13 @@
       $('#calendar').find('a').attr('target','_blank');
       $('jp-loading').removeClass('load');
     }
+	
+	
   );
 
 
 //End Calendar
-
 });
-
-    calendar.setOption('height', 'auto'); 
-    if(window.innerWidth < 600) calendar.changeView('list');
-	calendar.render();
-  });
 
 </script>
 	<style>
