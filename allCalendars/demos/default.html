@@ -158,7 +158,9 @@
       $('jp-loading').removeClass('load');
     }
   );
-
+calendar.setOption('height', 'auto'); 
+    if(window.innerWidth < 600) calendar.changeView('list');
+	calendar.render();
 
 //End Calendar
 });
