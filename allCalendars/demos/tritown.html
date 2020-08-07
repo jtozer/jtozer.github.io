@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link href='../fullcalendar.css' rel='stylesheet' />
+<link href='../fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<script src='../lib/moment.min.js'></script>
+<script src='../lib/jquery.min.js'></script>
+<script src='../fullcalendar.min.js'></script>
+<script src='../lib/jquery.qtip.min.js'></script>
+<script src='../gcal.js'></script>
+<script>
+	var events = 
+		
+			{
+				districtSchool: {//Academic Year Calendar
+                googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com',
+				color: '#60839F', //blue
+				textColor: 'white'
+				
+			},
+				District: {//District Calendar
+                googleCalendarId: 'rsu71.org_g6thhnlhjs5e7m5danu7p5u8go@group.calendar.google.com',
+				color: '#003965', //blue
+				textColor: 'white'	
+			},
+			
+				Board: {//RSU 71 BOD Calendar
+                googleCalendarId: 'rsu71.org_pcvmtis9r3i3slp8oq9bbi383g@group.calendar.google.com',
+				color: '#ffca03', //yellow
+				textColor: '#003965'	
+			},
+						
+				BAHS: {//BAHS/BCOPE Calendar
+                googleCalendarId: 'rsu71.org_gcagej5jlmnv3jc4ppi3s0t168@group.calendar.google.com',
+				color: '#0089D0', //ltBlue
+				textColor: 'white'
+			},			
+			
+	
+			
+				CASS: {//CASS Calendar
+                googleCalendarId: 'rsu71.org_qh1t039gjes83qjjicp0mdogpo@group.calendar.google.com',
+				color: '#ff6000', //Orange
+				textColor: 'white'
+			},
+			
+			
+				EB: {//East Belfast Calendar
+                googleCalendarId: 'rsu71.org_d7snk630tsdh8o58u1djukb92k@group.calendar.google.com',
+				color: '#1b7837', //Green
+				textColor: 'white'
+			},
+			
+			
+				Nickerson: {//Nickerson Calendar
+                googleCalendarId: 'rsu71.org_riksg926job8cd5uqolhgftes4@group.calendar.google.com',
+				color: '#CC004C', //Pink
+				textColor: 'white'
+				
+			},
+			
+			
+				Tritown: {//Tritown Calendar
+                googleCalendarId: 'rsu71.org_0uv37i08ua0qilaljo9rqnk408@group.calendar.google.com',
+				color: '#762a83', //Purple
+				textColor: '#fff'
+			},
+			
+			
+				THMS: {//THMS Calendar
+                googleCalendarId: 'rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com',
+				color: '#BF9200', //Gold
+				textColor: 'white'
+			}
+        }
+
+	$(document).ready(function() {
+    $('#calendar').fullCalendar({
+		theme:false,
+		firstDay: 0,
+		height: 'auto',
+			 header: {
+        left: 'title',
+        center: '',
+        right: 'prev, next today'
+      },
+
+        googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
+		timezone: 'America/New_York',
+		
+	eventRender : function(event, element) {
+                    // Add qTip for each event.
+                    element.qtip({
+                        content: {
+                            text    : event.tooltip,
+                            title   : {
+                                text    : event.tooltipTitle,
+                            }
+                        },
+                        position: {
+                            my : "top center",
+                            at : "bottom center",
+                            container : false,
+                            viewport : $(window),
+                            adjust: {
+                            	//method : 'shift shift',
+                            }
+                        },
+                        style: {
+                            classes : event.tooltipStyleClass,
+                            width   : 350
+                        },
+                        hide: {
+                            fixed: true,
+                        }
+ 
+                    }); // end of element.qtip({
+ 
+                    //element.tooltip();
+                }, 
+		
+	eventClick: function(event) {
+				// opens events in a popup window
+				window.open(event.url, 'gcalevent', 'width=700,height=600');
+				return false;}
+		
+	
+	})	
+	
+
+
+  //$('#calendar').fullCalendar('addEventSource', events.districtSchool);
+  //$('#calendar').fullCalendar('addEventSource', events.District);
+  //$('#calendar').fullCalendar('addEventSource', events.Board);
+  //$('#calendar').fullCalendar('addEventSource', events.CASS);
+  //$('#calendar').fullCalendar('addEventSource', events.EB);
+  //$('#calendar').fullCalendar('addEventSource', events.Nickerson);
+  $('#calendar').fullCalendar('addEventSource', events.Tritown);
+  //$('#calendar').fullCalendar('addEventSource', events.THMS);
+
+  $(':checkbox').on('click', function(){
+    if( $(this).is(':checked') ){
+      $('#calendar').fullCalendar('addEventSource', events[$(this).attr('id').replace('cal','')]);
+    }
+    else{
+      $('#calendar').fullCalendar('removeEventSource', events[$(this).attr('id').replace('cal','')]);
+    }
+  });
+  $('html, body').animate(
+    {
+    scrollTop: parseInt($('main').offset().top - 40)
+    }, 'fast', function(){
+      $('#calendar').find('a').attr('target','_blank');
+      $('jp-loading').removeClass('load');
+    }
+	
+	
+  );
+
+
+//End Calendar
+});
+
+</script>
+	<style>
+
+  body {
+  
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+	
+  }
+
+  #loading {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+.fc-toolbar.fc-header-toolbar {
+margin-right: 1.5em;  }
+	
+.fc-event {
+  position: relative;
+  /* for resize handle and other inner positioning */
+  display: block;
+  /* make the <a> tag block */
+  font-size: .75em;
+  padding: 3px 0;
+  font-family: 'PT Sans', sans-serif;
+  line-height: 1.6;
+  border-radius: 0px;
+  border: 0px solid #efefef;
+  }
+
+ 
+ 
+.fc th {
+	font-family: 'PT Sans', sans-serif;
+    background: #003965 !important;
+	color:#fff;
+	padding: 0;
+	line-height: 3em;
+	font-size:14px !important;
+	border-width: 0px;
+
+}
+
+.fc-button {
+  color: #003965;
+  background-color: #fff !important;
+  border-color: #003965; 
+  border-width: 1px;
+  margin-top: 15px;
+  
+  }
+
+ .fc-button:hover {
+  color: #003965;
+  background-color: #fff;
+  border-color: #003965; 
+  border-width: 1px;
+  }
+  
+  .fc-button:disabled {
+  color: #003965;
+  background-color: #fff;
+  border-color: #003965; 
+  border-width: 1px;
+  }
+
+.fc-button:not(:disabled):active,
+.fc-button:not(:disabled).fc-button-active {
+  color: #003965;
+  background-color: #fff;
+  border-color: #003965; 
+  }
+ 
+ .fc-toolbar h2 {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 2.1em;
+  font-weight: 200;
+  margin: 0; 
+  color:#555;
+  padding: 15px 15px 0 15px;}
+
+/*.fc-day-grid-event .fc-content{ white-space: normal!important; }*/
+
+  #calendar {
+    margin: 0 auto;
+	max-width: 100%;
+
+  }
+	}
+	
+	
+</style>
+</head>
+<body>
+
+<div id='responsive-wrapper'></div>
+	
+	<center><table>
+	<tbody>
+		<tr>
+			<td style="color:#ffffff;background:#003965;width:120px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calDistrict"> District</td>
+			<td style="color:#ffffff;background:#60839F;width:120px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="caldistrictSchool"> Academic Year</td>
+			<td style="color:#003965;background:#ffca03;width:120px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calBoard"> Board Meetings</td>
+			<td style="color:#ffffff;background:#0089D0;width:135px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calBAHS"> BAHS</td>
+			<td style="color:#ffffff;background:#ff6000;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calCASS"> CASS</td>
+			<td style="color:#ffffff;background:#1b7837;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calEB"> East Belfast</td>
+			<td style="color:#ffffff;background:#CC004C;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calNickerson"> Nickerson</td>
+			<td style="color:#ffffff;background:#762a83;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calTritown" checked> Tritown</td>
+			<td style="color:#ffffff;background:#BF9200;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calTHMS"> THMS</td>
+		</tr>
+	</tbody>
+</table></center>
+<br><br>
+<div id='calendar'></div><br>
+
+	
+
+
+
+</body>
+</html>
