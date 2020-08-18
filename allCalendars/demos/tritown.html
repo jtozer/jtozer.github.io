@@ -37,11 +37,7 @@
 				textColor: 'white'
 			},			
 			
-			//	BAHSSports: {//BAHS Sports Calendar
-            //    googleCalendarId: 'olrmpn54rfbff11c0a6giirco40iruhq@import.calendar.google.com',
-			//	color: '#0089D0', //ltBlue
-			//	textColor: 'white'
-		//	},			
+	
 			
 				CASS: {//CASS Calendar
                 googleCalendarId: 'rsu71.org_qh1t039gjes83qjjicp0mdogpo@group.calendar.google.com',
@@ -134,13 +130,13 @@
 	
 
 
-  $('#calendar').fullCalendar('addEventSource', events.districtSchool);
-  $('#calendar').fullCalendar('addEventSource', events.District);
-  $('#calendar').fullCalendar('addEventSource', events.Board);
+  //$('#calendar').fullCalendar('addEventSource', events.districtSchool);
+  //$('#calendar').fullCalendar('addEventSource', events.District);
+  //$('#calendar').fullCalendar('addEventSource', events.Board);
   //$('#calendar').fullCalendar('addEventSource', events.CASS);
   //$('#calendar').fullCalendar('addEventSource', events.EB);
   //$('#calendar').fullCalendar('addEventSource', events.Nickerson);
-  //$('#calendar').fullCalendar('addEventSource', events.Tritown);
+  $('#calendar').fullCalendar('addEventSource', events.Tritown);
   //$('#calendar').fullCalendar('addEventSource', events.THMS);
 
   $(':checkbox').on('click', function(){
@@ -204,7 +200,7 @@ margin-right: 1.5em;  }
  
 .fc th {
 	font-family: 'PT Sans', sans-serif;
-    background: #003965 !important;
+    background: #762a83 !important;
 	color:#fff;
 	padding: 0;
 	line-height: 3em;
@@ -214,33 +210,33 @@ margin-right: 1.5em;  }
 }
 
 .fc-button {
-  color: #003965;
+  color: #762a83;
   background-color: #fff !important;
-  border-color: #003965; 
+  border-color: #762a83; 
   border-width: 1px;
   margin-top: 15px;
   
   }
 
  .fc-button:hover {
-  color: #003965;
+  color: #762a83;
   background-color: #fff;
-  border-color: #003965; 
+  border-color: #762a83; 
   border-width: 1px;
   }
   
   .fc-button:disabled {
-  color: #003965;
+  color: #762a83;
   background-color: #fff;
-  border-color: #003965; 
+  border-color: #762a83; 
   border-width: 1px;
   }
 
 .fc-button:not(:disabled):active,
 .fc-button:not(:disabled).fc-button-active {
-  color: #003965;
+  color: #762a83;
   background-color: #fff;
-  border-color: #003965; 
+  border-color: #762a83; 
   }
  
  .fc-toolbar h2 {
@@ -270,14 +266,14 @@ margin-right: 1.5em;  }
 	<center><table>
 	<tbody>
 		<tr>
-			<td style="color:#ffffff;background:#003965;width:120px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calDistrict" checked> District</td>
-			<td style="color:#ffffff;background:#60839F;width:120px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="caldistrictSchool" checked> Academic Year</td>
-			<td style="color:#003965;background:#ffca03;width:120px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calBoard" checked> Board Meetings</td>
+			<td style="color:#ffffff;background:#003965;width:120px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calDistrict"> District</td>
+			<td style="color:#ffffff;background:#60839F;width:120px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="caldistrictSchool"> Academic Year</td>
+			<td style="color:#003965;background:#ffca03;width:120px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calBoard"> Board Meetings</td>
 			<td style="color:#ffffff;background:#0089D0;width:135px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calBAHS"> BAHS</td>
 			<td style="color:#ffffff;background:#ff6000;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calCASS"> CASS</td>
 			<td style="color:#ffffff;background:#1b7837;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calEB"> East Belfast</td>
 			<td style="color:#ffffff;background:#CC004C;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calNickerson"> Nickerson</td>
-			<td style="color:#ffffff;background:#762a83;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calTritown"> Tritown</td>
+			<td style="color:#ffffff;background:#762a83;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calTritown" checked> Tritown</td>
 			<td style="color:#ffffff;background:#BF9200;width:125px;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calTHMS"> THMS</td>
 		</tr>
 	</tbody>
