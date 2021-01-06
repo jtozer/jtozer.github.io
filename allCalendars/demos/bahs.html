@@ -91,6 +91,22 @@
         center: '',
         right: 'prev, next today'
       },
+	  
+	views: {
+				list: {
+					titleFormat: 'MMMM',
+					duration: { days: 5},
+					displayEventEnd: false,
+				
+				visibleRange: function(currentDate) {
+				return {
+					start: currentDate.clone().subtract(1, 'days'),
+					end: currentDate.clone().add(5, 'days') // exclusive end, so 3
+				};
+					
+						}
+						}
+				},
 
         googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
 		timezone: 'America/New_York',
