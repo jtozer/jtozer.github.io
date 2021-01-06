@@ -140,6 +140,11 @@
  
                     //element.tooltip();
                 }, 
+	 eventAfterAllRender: function(view) {
+        if(window.innerWidth < 1000) {
+          $('#calendar').fullCalendar('changeView', 'list');
+        } //IF MOBILE CHANGE VIEW TO LIST WEEK
+      },
 		
 	eventClick: function(event) {
 				// opens events in a popup window
