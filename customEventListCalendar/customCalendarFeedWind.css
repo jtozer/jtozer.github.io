@@ -15,7 +15,7 @@
     height: 30px; /*height of red area of date box */
     font-size: 20px;
     line-height: 31px;
-    padding: 0 19px 10px 19px; /* 0 19px */
+    padding: 0 19px 20px 19px; /* 0 19px */
     color:black;
     /* border: 1px solid; */
 }
