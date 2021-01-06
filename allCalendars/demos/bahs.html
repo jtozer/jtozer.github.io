@@ -93,11 +93,22 @@
       },
 	  
 	views: {
-				listWeek: {
-					titleFormat: 'MMMM'
+				list: {
+					titleFormat: 'MMMM',
+					duration: { days: 5},
+					displayEventEnd: false,
+				
+				visibleRange: function(currentDate) {
+				return {
+					start: currentDate.clone().subtract(1, 'days'),
+					end: currentDate.clone().add(5, 'days') // exclusive end, so 3
+				};
+					
+						}
 						}
 				},
-
+	
+	
         googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
 		timezone: 'America/New_York',
 		
@@ -131,12 +142,31 @@
  
                     //element.tooltip();
                 }, 
+		
+	defaultView: 'month',
+	
+	viewRender: function(view,element) {
+							if(view.name=='month'){
+								//month
+							$('.fc-left .fc-button-group,.fc-prev-button, .fc-next-button').show();
+						}else{
+							//listWeek remove buttons
+							$('.fc-left .fc-button-group,.fc-prev-button, .fc-next-button').hide();
+						}
+						},
 				
 	 eventAfterAllRender: function(view) {
-        if(window.innerWidth < 1000) {
-          $('#calendar').fullCalendar('changeView', 'listWeek');
+        if(window.innerWidth < 500) {
+          $('#calendar').fullCalendar('changeView', 'list');
         } //IF MOBILE CHANGE VIEW TO LIST WEEK
       },
+	  
+	 visibleRange: function(currentDate) {
+        return {
+            start: currentDate.clone().subtract(0, 'days'),
+            end: currentDate.clone().add(31, 'days') // exclusive end, so 3
+        };
+    },
 		
 	eventClick: function(event) {
 				// opens events in a popup window
