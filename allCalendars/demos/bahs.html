@@ -83,13 +83,29 @@
 	$(document).ready(function() {
     $('#calendar').fullCalendar({
 		theme:false,
-		firstDay: 0,
+		firstDay: 1,
 		height: 'auto',
 			 header: {
-        left: 'title',
-        center: '',
-        right: 'prev, next today'
+        left: 'title, prev, next',
+        center: 'list',
+        right: ''
       },
+	 
+	views: {
+				list: {
+					titleFormat: 'MMMM',
+					duration: { days: 10},
+					displayEventEnd: false,
+				
+				visibleRange: function(currentDate) {
+				return {
+					start: currentDate.clone().subtract(1, 'days'),
+					end: currentDate.clone().add(10, 'days') // exclusive end, so 3
+				};
+					
+						}
+						}
+				},
 
         googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
 		timezone: 'America/New_York',
@@ -252,6 +268,11 @@ margin-right: 1.5em;  }
   margin: 0; 
   color:#555;
   padding: 15px 15px 0 15px;}
+ 
+ .fc-list-heading {
+		color: #003965;
+		font-size: 1.15em;
+	}
 
 /*.fc-day-grid-event .fc-content{ white-space: normal!important; }*/
 

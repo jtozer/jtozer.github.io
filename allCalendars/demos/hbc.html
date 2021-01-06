@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css' rel='stylesheet' />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
+<link href='https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/minty/bootstrap.min.css' rel='stylesheet' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/gcal.js'></script>
+<script>
+
+	$(document).ready(function() {
+	
+		$('#calendar').fullCalendar({
+			themeSystem:'bootstrap4',
+			bootstrapFontAwesome: {
+					prev: 'fa-chevron-left',
+					next: 'fa-chevron-right'
+				},
+			height:900,
+			
+			header: {
+						left: '',
+						center: 'prev title next',
+						right: ''
+						},
+						
+		
+			
+			views: {
+				list: {
+					titleFormat: 'MMMM',
+					duration: { days: 5},
+					displayEventEnd: false,
+				
+				visibleRange: function(currentDate) {
+				return {
+					start: currentDate.clone().subtract(1, 'days'),
+					end: currentDate.clone().add(5, 'days') // exclusive end, so 3
+				};
+					
+						}
+						}
+				},
+	
+			googleCalendarApiKey: 'AIzaSyAzkEQw6GJZvWzVV_YNPYEuz6Q4eXauqQI',
+		
+			
+			// HBC Monthly Calendar
+			events: {
+				googleCalendarId:'tech@hermonbaptistchurch.org',
+				color: '#7dc1ab',
+				textColor: '#ffffff',
+				borderColor: '#69ad97',
+				className: 'gcal-event'
+				},
+			
+			defaultView: 'month',
+			
+			
+		
+		viewRender: function(view,element) {
+							if(view.name=='month'){
+								//month
+							$('.fc-left .fc-button-group,.fc-prev-button, .fc-next-button').show();
+						}else{
+							//listWeek remove buttons
+							$('.fc-left .fc-button-group,.fc-prev-button, .fc-next-button').hide();
+						}
+						},
+	               
+			eventClick: function(event) {
+				// opens events in a popup window
+				window.open(event.url, 'gcalevent', 'width=450,height=320');
+				return false;
+			},
+			
+			 eventAfterAllRender: function(view) {
+        if(window.innerWidth < 500) {
+          $('#calendar').fullCalendar('changeView', 'list');
+        } //IF MOBILE CHANGE VIEW TO LIST WEEK
+      },
+	  
+	 visibleRange: function(currentDate) {
+        return {
+            start: currentDate.clone().subtract(0, 'days'),
+            end: currentDate.clone().add(31, 'days') // exclusive end, so 3
+        };
+    },
+	  			
+			loading: function(bool) {
+				$('#loading').toggle(bool);
+			}
+			
+		});
+	
+	});
+	
+
+</script>
+
+<style>
+
+	body {
+		margin: 40px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
+	
+	.fc-today {
+		background-color: #cde7df;
+	}
+	
+	.fc-list-heading {
+		background-color: #7dc1ab;
+		color: #fff;
+		font-size: 1.15em;
+	}
+	
+	#responsive-wrapper {
+        width:100%;
+        margin 0 auto;
+	}
+		
+	#loading {
+		display: none;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+
+	#calendar {
+		max-width: 100%;
+		margin: 0 auto;
+		
+	}
+
+		}
+</style>
+</head>
+<body>
+
+
+	<div id='loading'>loading...</div>
+	<div id='responsive-wrapper'></div>
+	<div id='calendar'></div><br><br>
+
+	
+
+</body>
+</html>
