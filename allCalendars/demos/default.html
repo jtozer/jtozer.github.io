@@ -10,60 +10,60 @@
 <script src='../lib/jquery.qtip.min.js'></script>
 <script src='../gcal.js'></script>
 <script>
-	var events = 
-		
+	var events =
+
 			{
 				districtSchool: {//Academic Year Calendar
                 googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com',
 				color: '#60839F', //blue
 				textColor: 'white'
-				
+
 			},
 				District: {//District Calendar
                 googleCalendarId: 'rsu71.org_g6thhnlhjs5e7m5danu7p5u8go@group.calendar.google.com',
 				color: '#0089D0', //blue
-				textColor: 'white'	
+				textColor: 'white'
 			},
-			
+
 				Board: {//RSU 71 BOD Calendar
                 googleCalendarId: 'rsu71.org_pcvmtis9r3i3slp8oq9bbi383g@group.calendar.google.com',
 				color: '#bf403a', //red
-				textColor: '#ffffff'	
+				textColor: '#ffffff'
 			},
-						
+
 				BAHS: {//BAHS/BCOPE Calendar
                 googleCalendarId: 'rsu71.org_gcagej5jlmnv3jc4ppi3s0t168@group.calendar.google.com',
 				color: '#003965', //ltBlue
 				textColor: 'white'
-			},		
+			},
 
 				BAHSAthletics: {//BAHS Athletics Calendar
-                googleCalendarId: 'ko2cfquudr7kcik83mg7l4lqatndkel4@import.calendar.google.com',
+                googleCalendarId: 'nj4eq4hd9dk7tv1ciru4q7cu3cn7r777@import.calendar.google.com',
                 color: '#ffff00', //yellow
 				textColor: 'black'
-			},					
-			
-				
+			},
+
+
 				CASS: {//CASS Calendar
                 googleCalendarId: 'rsu71.org_qh1t039gjes83qjjicp0mdogpo@group.calendar.google.com',
 				color: '#d88730', //Orange ff6000
 				textColor: 'white'
 			},
-			
-			
+
+
 				EBKN: {//East Belfast & Kermit Nickerson Calendar
                 googleCalendarId: 'rsu71.org_riksg926job8cd5uqolhgftes4@group.calendar.google.com',
 				color: '#456d41', //Green
 				textColor: 'white'
-			},			
-			
+			},
+
 				Tritown: {//Tritown Calendar
                 googleCalendarId: 'rsu71.org_0uv37i08ua0qilaljo9rqnk408@group.calendar.google.com',
 				color: '#51416d', //Purple 762a83
 				textColor: '#fff'
 			},
-			
-			
+
+
 				THMS: {//THMS Calendar
                 googleCalendarId: 'rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com',
 				color: '#f4be00', //Gold
@@ -81,26 +81,26 @@
         center: '',
         right: ''
       },
-	 
+
 	views: {
 				list: {
 					titleFormat: 'MMMM',
 					duration: { days: 10},
 					displayEventEnd: false,
-				
+
 				visibleRange: function(currentDate) {
 				return {
 					start: currentDate.clone().subtract(1, 'days'),
 					end: currentDate.clone().add(10, 'days') // exclusive end, so 3
 				};
-					
+
 						}
 						}
 				},
 
         googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
 		timezone: 'America/New_York',
-		
+
 	eventRender : function(event, element) {
                     // Add qTip for each event.
                     element.qtip({
@@ -126,25 +126,25 @@
                         hide: {
                             fixed: true,
                         }
- 
+
                     }); // end of element.qtip({
- 
+
                     //element.tooltip();
-                }, 
+                },
 	 eventAfterAllRender: function(view) {
         if(window.innerWidth < 1000) {
           $('#calendar').fullCalendar('changeView', 'list');
         } //IF MOBILE CHANGE VIEW TO LIST WEEK
       },
-		
+
 	eventClick: function(event) {
 				// opens events in a popup window
 				window.open(event.url, 'gcalevent', 'width=700,height=600');
 				return false;}
-		
-	
-	})	
-	
+
+
+	})
+
 
 
   $('#calendar').fullCalendar('addEventSource', events.districtSchool);
@@ -172,8 +172,8 @@
       $('#calendar').find('a').attr('target','_blank');
       $('jp-loading').removeClass('load');
     }
-	
-	
+
+
   );
 
 
@@ -184,11 +184,11 @@
 	<style>
 
   body {
-  
+
     padding: 0;
     font-family: 'PT Sans', sans-serif;
     font-size: 14px;
-	
+
   }
 
   #loading {
@@ -200,7 +200,7 @@
 
 .fc-toolbar.fc-header-toolbar {
 margin-right: 1.5em;  }
-	
+
 .fc-event {
   position: relative;
   /* for resize handle and other inner positioning */
@@ -214,7 +214,7 @@ margin-right: 1.5em;  }
   border: 0px solid #efefef;
   }
 
- 
+
 .fc th {
 	font-family: 'PT Sans', sans-serif;
     background: #003965 !important;
@@ -229,23 +229,23 @@ margin-right: 1.5em;  }
 .fc-button {
   color: #003965;
   background-color: #fff !important;
-  border-color: #003965; 
+  border-color: #003965;
   border-width: 1px;
   margin-top: 15px;
-  
+
   }
 
  .fc-button:hover {
   color: #003965;
   background-color: #fff;
-  border-color: #003965; 
+  border-color: #003965;
   border-width: 1px;
   }
-  
+
   .fc-button:disabled {
   color: #003965;
   background-color: #fff;
-  border-color: #003965; 
+  border-color: #003965;
   border-width: 1px;
   }
 
@@ -253,17 +253,17 @@ margin-right: 1.5em;  }
 .fc-button:not(:disabled).fc-button-active {
   color: #003965;
   background-color: #fff;
-  border-color: #003965; 
+  border-color: #003965;
   }
- 
+
  .fc-toolbar h2 {
   font-family: 'PT Sans', sans-serif;
   font-size: 2.1em;
   font-weight: 200;
-  margin: 0; 
+  margin: 0;
   color:#555;
   padding: 15px 15px 0 15px;}
- 
+
  .fc-list-heading {
 		color: #003965;
 		font-size: 1.15em;
@@ -274,17 +274,17 @@ margin-right: 1.5em;  }
   #calendar {
     margin: 0 auto;
 	max-width: 100%;
-	
+
   }
 	}
-	
-	
+
+
 </style>
 </head>
 <body>
 
 <div id='responsive-wrapper'></div>
-	
+
 	<center><table>
 	<tbody>
 		<tr>
@@ -297,14 +297,14 @@ margin-right: 1.5em;  }
 			<td style="color:#ffffff;background:#456d41;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calEBKN"> EB & KN</td>
 			<td style="color:#ffffff;background:#51416d;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calTritown"> Tritown</td>
 			<td style="color:#003965;background:#f4be00;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calTHMS"> THMS</td>
-		
+
 		</tr>
 	</tbody>
 </table></center>
 <br><br>
 <div id='calendar'></div><br>
 
-	
+
 
 
 
