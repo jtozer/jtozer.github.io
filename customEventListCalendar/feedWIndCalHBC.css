@@ -4,8 +4,8 @@
 
 .fw-gc-feed-item{  
     position:relative;
-    padding: 32px 0; /* 40px 0; Item postion relative to date box - 25px moves the items up */
-    padding-left: 93px !important; /* 97px Items to right of the date box 0px puts items behind adjust the left padding as needed */
+    padding: 0 0; /* 40px 0; Item postion relative to date box - 25px moves the items up */
+    padding-left: 0 !important; /* 97px Items to right of the date box 0px puts items behind adjust the left padding as needed */
     }
  
 .fw-gc-feed-item-date-only{
