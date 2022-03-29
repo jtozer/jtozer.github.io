@@ -1,4 +1,4 @@
-#fw-container{
+#fw-feed-items-scroll-area{
 	margin-bottom: 100px;
 }
 
@@ -15,7 +15,7 @@
     left: 10px;
     text-align: center;
     width: 42px; /* 50px width of date box */
-    background: #003965;
+    background: #000;
     height: 30px;
     font-size: 20px;
     line-height: 31px;
