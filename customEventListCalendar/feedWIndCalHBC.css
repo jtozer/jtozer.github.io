@@ -1,5 +1,5 @@
 #fw-container{
-	margin-bottom: 100px
+	margin-bottom: 100px;
 }
 
 .fw-gc-feed-item{  
@@ -15,7 +15,7 @@
     left: 10px;
     text-align: center;
     width: 42px; /* 50px width of date box */
-    background: #000;
+    background: #003965;
     height: 30px;
     font-size: 20px;
     line-height: 31px;
