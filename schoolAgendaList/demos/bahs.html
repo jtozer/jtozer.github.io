@@ -16,7 +16,7 @@
 		$('#calendar').fullCalendar({
 			theme: true,
 			defaultView: 'list', 
-			duration: { days: 21 },
+			duration: { days: 7 },
 			displayEventEnd: false,
 			height: 315,
 			header: {
@@ -30,7 +30,7 @@
 			 visibleRange: function(currentDate) {
         return {
             start: currentDate.clone().subtract(0, 'days'),
-            end: currentDate.clone().add(21, 'days') // exclusive end, so 3
+            end: currentDate.clone().add(31, 'days') // exclusive end, so 3
         };
     },
 					
