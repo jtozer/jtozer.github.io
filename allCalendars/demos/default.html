@@ -38,7 +38,7 @@
 			},
 
 				BAHSAthletics: {//BAHS Athletics Calendar
-                googleCalendarId: 'd0h1293bfn5dtpggmf51qc2k5f1e2j61@import.calendar.google.com',
+                googleCalendarId: '3fsfasivtdvrmd709go8tl95c8vei1e3@import.calendar.google.com',
                 color: '#ffff00', //yellow
 				textColor: 'black'
 			},
@@ -68,6 +68,12 @@
                 googleCalendarId: 'rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com',
 				color: '#f4be00', //Gold
 				textColor: '#003965'
+			}, 
+			
+				THMSAthletics: {//THMS Athletics Calendar
+                googleCalendarId: 'bs72kmlv59co79aifan0f9v80cifdb74@import.calendar.google.com',
+				color: '#ffff00', //Yellow
+				textColor: 'black'
 			}
         }
 
@@ -156,6 +162,7 @@
   //$('#calendar').fullCalendar('addEventSource', events.EBKN);
   //$('#calendar').fullCalendar('addEventSource', events.Tritown);
   //$('#calendar').fullCalendar('addEventSource', events.THMS);
+  //$('#calendar').fullCalendar('addEventSource', events.THMSAthletics);
 
   $(':checkbox').on('click', function(){
     if( $(this).is(':checked') ){
@@ -296,7 +303,8 @@ margin-right: 1.5em;  }
 			<td style="color:#ffffff;background:#d88730;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calCASS"> CASS</td>
 			<td style="color:#ffffff;background:#456d41;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calEBKN"> EB & KN</td>
 			<td style="color:#ffffff;background:#51416d;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calTritown"> Tritown</td>
-			<td style="color:#003965;background:#f4be00;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calTHMS"> THMS</td>
+		<td style="color:#003965;background:#f4be00;height:30px;border:none;font-size:12px;font-family:verdana;"><input type="checkbox" id="calTHMS"> THMS
+			<input type="checkbox" id="calTHMSAthletics"><mark>Athletics</mark></td>
 
 		</tr>
 	</tbody>
