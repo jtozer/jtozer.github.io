@@ -2,6 +2,8 @@
 <head>
 <meta charset='utf-8' />
 <script src='../dist/index.global.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.4/index.global.min.js'</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
@@ -19,12 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     displayEventTime: false, // don't show the time column in list view
 
-    // THIS KEY WON'T WORK IN PRODUCTION!!!
-    // To make your own Google API key, follow the directions here:
-    // http://fullcalendar.io/docs/google_calendar/
     googleCalendarApiKey: 'AIzaSyAl1DcZVLmoviZchn0Owv__DgmyhfizTEE',
 
-    // US Holidays
+    // THMS List
     events: 'rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com',
 
     eventClick: function(arg) {
