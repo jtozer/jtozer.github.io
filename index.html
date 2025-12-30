@@ -13,7 +13,49 @@
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
   <style>
-    body {
+    /* LIST VIEW – SHADCN / BREEZY STYLE */
+
+.fc-list {
+  border: none;
+}
+
+.fc-list-day-cushion {
+  background: transparent;
+  padding: 0.75rem 0;
+  font-weight: 600;
+  color: #111827;
+}
+
+.fc-list-event {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.fc-list-event:hover {
+  background: #f9fafb;
+}
+
+.fc-list-event-dot {
+  border-color: #2563eb;
+}
+
+.fc-list-event-time {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.fc-list-event-title {
+  font-weight: 500;
+  color: #111827;
+}
+
+	
+	
+	body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
@@ -25,6 +67,7 @@
       min-height: 600px;
       border: 2px dashed #ccc;
     }
+
   </style>
 </head>
 <body>
