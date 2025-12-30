@@ -31,4 +31,20 @@
 
   <div id="calendar"></div>
 
-  <!-- YOUR
+  <!-- YOUR CODE MUST COME AFTER THE CDN SCRIPT -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log('FullCalendar object:', window.FullCalendar);
+
+      const calendarEl = document.getElementById('calendar');
+
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth'
+      });
+
+      calendar.render();
+    });
+  </script>
+
+</body>
+</html>
