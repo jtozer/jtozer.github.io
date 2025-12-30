@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FullCalendar v6 Test</title>
+  <title>Calendar</title>
 
   <!-- FullCalendar v6 (GLOBAL BUILD) -->
   <link
@@ -12,133 +12,165 @@
   />
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
+  <!-- Google Calendar plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.15/index.global.min.js"></script>
+
   <style>
-    /* LIST VIEW – SHADCN / BREEZY STYLE */
-
-.fc-list {
-  border: none;
-}
-
-.fc-list-day-cushion {
-  background: transparent;
-  padding: 0.75rem 0;
-  font-weight: 600;
-  color: #111827;
-}
-
-.fc-list-event {
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  margin-bottom: 0.75rem;
-  padding: 0.75rem;
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-}
-
-.fc-list-event:hover {
-  background: #f9fafb;
-}
-
-.fc-list-event-dot {
-  border-color: #2563eb;
-}
-
-.fc-list-event-time {
-  color: #6b7280;
-  font-size: 0.85rem;
-}
-
-.fc-list-event-title {
-  font-weight: 500;
-  color: #111827;
-}
-
-/* ===== MONTH VIEW – SHADCN / BREEZY ===== */
-
-.fc-theme-standard td,
-.fc-theme-standard th {
-  border-color: #e5e7eb;
-}
-
-.fc-col-header-cell {
-  background: #f8fafc;
-  font-weight: 500;
-  font-size: 0.85rem;
-  padding: 0.5rem 0;
-}
-
-.fc-daygrid-day {
-  background: #ffffff;
-}
-
-.fc-daygrid-day-frame {
-  border-radius: 10px;
-  margin: 4px;
-  padding: 6px;
-}
-
-.fc-day-today {
-  background: #eff6ff !important;
-}
-
-.fc-daygrid-day-number {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #374151;
-}
-
-.fc-event {
-  border-radius: 8px;
-  padding: 2px 6px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-/* Hover polish */
-.fc-daygrid-day-frame:hover {
-  background: #f9fafb;
-}
-
-.fc .fc-col-header-cell .fc-col-header-cell-cushion {
-  padding: 0.9rem 0;
-  border-radius: 9999px;
-}
-	
-	
-	body {
+    /* =========================
+       BASE PAGE STYLE
+       ========================= */
+    body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8fafc;
     }
 
     #calendar {
       max-width: 1100px;
       margin: 2rem auto;
       padding: 1rem;
-      min-height: 600px;
-      border: 2px dashed #ccc;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow:
+        0 1px 2px rgba(0,0,0,.04),
+        0 6px 16px rgba(0,0,0,.06);
     }
 
+    /* =========================
+       MONTH VIEW – MODERN / SHADCN
+       ========================= */
+    .fc-theme-standard td,
+    .fc-theme-standard th {
+      border-color: #e5e7eb;
+    }
+
+    /* Weekday header */
+    .fc .fc-col-header-cell {
+      background: #f8fafc;
+    }
+
+    .fc .fc-col-header-cell .fc-col-header-cell-cushion {
+      padding: 0.9rem 0;
+      border-radius: 9999px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    /* Day cells */
+    .fc-daygrid-day-frame {
+      border-radius: 12px;
+      margin: 4px;
+      padding: 6px;
+    }
+
+    .fc-daygrid-day-number {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #374151;
+    }
+
+    .fc-day-today {
+      background: #eff6ff !important;
+    }
+
+    /* Events in month view */
+    .fc-event {
+      border-radius: 8px;
+      padding: 2px 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* =========================
+       LIST VIEW – MODERN CARDS
+       ========================= */
+    .fc-list {
+      border: none;
+    }
+
+    .fc-list-day-cushion {
+      background: transparent;
+      padding: 0.75rem 0;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .fc-list-event {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      padding: 0.75rem;
+      background: #ffffff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .fc-list-event:hover {
+      background: #f9fafb;
+    }
+
+    .fc-list-event-time {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .fc-list-event-title {
+      font-weight: 500;
+      color: #111827;
+    }
+
+    /* =========================
+       TOOLBAR BUTTONS
+       ========================= */
+    .fc-button {
+      border-radius: 8px !important;
+      font-weight: 500;
+      padding: 0.35rem 0.75rem;
+    }
+
+    .fc-button-primary {
+      background: #2563eb;
+      border-color: #2563eb;
+    }
+
+    .fc-button-primary:hover {
+      background: #1d4ed8;
+      border-color: #1d4ed8;
+    }
   </style>
 </head>
 <body>
-
-<h2 style="text-align:center;">FullCalendar should appear below</h2>
 
 <div id="calendar"></div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    console.log('FullCalendar object:', window.FullCalendar);
-
     const calendarEl = document.getElementById('calendar');
 
     const calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
-	headerToolbar: {
-    left: 'prev,next today',
-    center: 'title',
-    right: 'dayGridMonth,listMonth'
-  }
+
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,listMonth'
+      },
+
+      height: 'auto',
+
+      googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
+
+      eventSources: [
+        {
+          googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com',
+          color: '#2563eb',   // blue
+          textColor: '#ffffff'
+        },
+        {
+          googleCalendarId: 'rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com',
+          color: '#0ea5e9',   // lighter blue
+          textColor: '#ffffff'
+        }
+      ]
     });
 
     calendar.render();
