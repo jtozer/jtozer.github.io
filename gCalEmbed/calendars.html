@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Calendar</title>
 
 <style>
@@ -11,15 +10,17 @@
   .desktop {
     display: block;
   }
+
   .mobile {
     display: none;
   }
 
-  /* Mobile switch */
-  @media (max-width: 768px) {
+  /* Switch on mobile */
+  @media (max-width: 900px) {
     .desktop {
       display: none;
     }
+
     .mobile {
       display: block;
     }
@@ -44,13 +45,13 @@
 <!-- 🖥 DESKTOP: Google Calendar MONTH -->
 <iframe
   class="desktop month"
-  src="https://calendar.google.com/calendar/embed?src=rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com&mode=MONTH&showTitle=0&showTabs=0&showCalendars=0&ctz=America%2FNew_York">
+  src="https://calendar.google.com/calendar/embed?src=rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com&src=rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com&mode=MONTH&showTitle=0&showTabs=0&showCalendars=0&ctz=America%2FNew_York">
 </iframe>
 
 <!-- 📱 MOBILE: API AGENDA -->
 <iframe
   class="mobile agenda"
-  src="https://jtozer.github.io/gCalEmbed/calendarAPI.html">
+  src="./calendarAPI.html">
 </iframe>
 
 </body>
