@@ -49,10 +49,18 @@
 const API_KEY = "AIzaSyDvqSdgcf5K_wdKRNv7-NJ_qp4qK070U7c";
 
 // 📅 CALENDARS (URL-ENCODED)
+
 const calendars = [
-  encodeURIComponent("rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com"),
-  encodeURIComponent("rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com")
+  {
+    id: encodeURIComponent("rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com"),
+    color: "#1a73e8" // Blue
+  },
+  {
+    id: encodeURIComponent("rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com"),
+    color: "#0b8043" // Green
+  }
 ];
+
 
 // ⏱️ TIME WINDOW (NEXT 15 DAYS)
 const now = new Date();
@@ -112,13 +120,15 @@ async function fetchEvents(calendarId) {
     // 2️⃣ Fetch events from all calendars
     let allEvents = [];
 
-    for (const cal of calendars) {
-      const events = await fetchEvents(cal);
-      events.forEach(event => {
-        event._color = calendarColors[cal] || "#1a73e8"; // fallback blue
-      });
-      allEvents = allEvents.concat(events);
-    }
+  for (const cal of calendars) {
+  const events = await fetchEvents(cal.id);
+
+  events.forEach(event => {
+    event._color = cal.color;
+  });
+
+  allEvents = allEvents.concat(events);
+}
 
     // 3️⃣ Sort events chronologically
     allEvents.sort((a, b) => {
