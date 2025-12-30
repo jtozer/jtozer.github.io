@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FullCalendar v7 Test</title>
+  <title>FullCalendar v6 Test</title>
 
-  <!-- FullCalendar v7 CSS -->
+  <!-- FullCalendar v6 (GLOBAL BUILD) -->
   <link
+    href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css"
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@7.0.0/index.min.css"
   />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@7.0.0/index.min.css"
-  />
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
   <style>
     body {
@@ -32,21 +29,17 @@
 </head>
 <body>
 
-<h2 style="text-align:center;">FullCalendar v7 should appear below</h2>
+<h2 style="text-align:center;">FullCalendar should appear below</h2>
 
 <div id="calendar"></div>
 
-<script type="module">
-  import { Calendar } from 'https://cdn.jsdelivr.net/npm/@fullcalendar/core@7.0.0/index.js';
-  import dayGridPlugin from 'https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@7.0.0/index.js';
-
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('FullCalendar v7 loaded');
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    console.log('FullCalendar object:', window.FullCalendar);
 
     const calendarEl = document.getElementById('calendar');
 
-    const calendar = new Calendar(calendarEl, {
-      plugins: [dayGridPlugin],
+    const calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth'
     });
 
