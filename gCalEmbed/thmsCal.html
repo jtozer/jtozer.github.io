@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  .desktop {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .desktop {
+      display: none;
+    }
+    .mobile {
+      display: block;
+    }
+  }
+
+  iframe {
+    width: 100%;
+    height: 700px;
+    border: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- Desktop: Month -->
+<iframe
+  class="desktop"
+  src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&showTitle=0&showTz=0&src=cnN1NzEub3JnX2E5YzNkYjNkbDF2bnRlb2MwOXRubTVyNDJjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=cnN1NzEub3JnX2huc2cyYnF2aDNsdGRobzMxdjRsMGN1bWRvQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233f51b5&color=%23f9c127" style="border:solid 1px #777" width=100% height="600" frameborder="0" scrolling="no">
+</iframe>
+
+<!-- Mobile: Agenda -->
+<iframe
+  class="mobile"
+  src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&showPrint=0&showTitle=0&showTz=0&src=cnN1NzEub3JnX2E5YzNkYjNkbDF2bnRlb2MwOXRubTVyNDJjQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=cnN1NzEub3JnX2huc2cyYnF2aDNsdGRobzMxdjRsMGN1bWRvQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233f51b5&color=%23f9c127" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no">
+</iframe>
+
+</body>
+</html>
+
+
