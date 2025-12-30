@@ -7,20 +7,31 @@
 
 <style>
   body {
-    font-family: system-ui, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     margin: 0;
     padding: 1rem;
   }
+
+  h2 {
+    margin-top: 0;
+  }
+
   .event {
-    padding: 1rem 0;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
     border-bottom: 1px solid #ddd;
   }
+
   .date {
-    font-weight: bold;
+    font-weight: 600;
   }
+
   .time {
-    color: #555;
     font-size: 0.9rem;
+    color: #555;
+  }
+
+  .title {
+    margin-top: 0.25rem;
   }
 </style>
 </head>
@@ -30,40 +41,128 @@
 <div id="events">Loading…</div>
 
 <script>
-  const API_KEY = "AIzaSyDvqSdgcf5K_wdKRNv7-NJ_qp4qK070U7c";
-  const CALENDAR_ID = encodeURIComponent(
-  "rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com"
-);
+/* =========================
+   CONFIG
+   ========================= */
 
+// 🔑 API KEY (keep in quotes)
+const API_KEY = "AIzaSyDvqSdgcf5K_wdKRNv7-NJ_qp4qK070U7c";
 
-  const url =
-    `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events` +
+// 📅 CALENDARS (URL-ENCODED)
+const calendars = [
+  encodeURIComponent("rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com"),
+  encodeURIComponent("rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com")
+];
+
+// ⏱️ TIME WINDOW (NEXT 15 DAYS)
+const now = new Date();
+const timeMin = now.toISOString();
+
+const timeMaxDate = new Date();
+timeMaxDate.setDate(timeMaxDate.getDate() + 15);
+const timeMax = timeMaxDate.toISOString();
+
+/* =========================
+   FETCH CALENDAR COLORS
+   ========================= */
+
+async function fetchCalendarColors() {
+  const res = await fetch(
+    `https://www.googleapis.com/calendar/v3/users/me/calendarList?key=${API_KEY}`
+  );
+  const data = await res.json();
+
+  const colors = {};
+  (data.items || []).forEach(cal => {
+    colors[encodeURIComponent(cal.id)] = cal.backgroundColor;
+  });
+
+  return colors;
+}
+
+/* =========================
+   FETCH EVENTS
+   ========================= */
+
+async function fetchEvents(calendarId) {
+  const res = await fetch(
+    `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events` +
     `?key=${API_KEY}` +
     `&singleEvents=true` +
     `&orderBy=startTime` +
-    `&timeMin=${new Date().toISOString()}`;
+    `&timeMin=${timeMin}` +
+    `&timeMax=${timeMax}`
+  );
 
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById("events");
-      container.innerHTML = "";
+  const data = await res.json();
+  return data.items || [];
+}
 
-      data.items.forEach(event => {
-        const start = event.start.dateTime || event.start.date;
-        const d = new Date(start);
+/* =========================
+   MAIN
+   ========================= */
 
-        container.innerHTML += `
-          <div class="event">
-            <div class="date">${d.toLocaleDateString()}</div>
-            <div class="time">${d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
-            <div>${event.summary || "(No title)"}</div>
-          </div>`;
+(async function () {
+  const container = document.getElementById("events");
+
+  try {
+    // 1️⃣ Get Google calendar colors
+    const calendarColors = await fetchCalendarColors();
+
+    // 2️⃣ Fetch events from all calendars
+    let allEvents = [];
+
+    for (const cal of calendars) {
+      const events = await fetchEvents(cal);
+      events.forEach(event => {
+        event._color = calendarColors[cal] || "#1a73e8"; // fallback blue
       });
-    })
-    .catch(() => {
-      document.getElementById("events").innerText = "Failed to load events";
+      allEvents = allEvents.concat(events);
+    }
+
+    // 3️⃣ Sort events chronologically
+    allEvents.sort((a, b) => {
+      const aTime = new Date(a.start.dateTime || a.start.date);
+      const bTime = new Date(b.start.dateTime || b.start.date);
+      return aTime - bTime;
     });
+
+    // 4️⃣ Render
+    container.innerHTML = "";
+
+    if (allEvents.length === 0) {
+      container.innerText = "No upcoming events.";
+      return;
+    }
+
+    allEvents.forEach(event => {
+      const start = event.start.dateTime || event.start.date;
+      const dateObj = new Date(start);
+
+      const div = document.createElement("div");
+      div.className = "event";
+      div.style.borderLeft = `6px solid ${event._color}`;
+
+      div.innerHTML = `
+        <div class="date">${dateObj.toLocaleDateString()}</div>
+        <div class="time">
+          ${
+            event.start.dateTime
+              ? dateObj.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+              : "All day"
+          }
+        </div>
+        <div class="title">${event.summary || "(No title)"}</div>
+      `;
+
+      container.appendChild(div);
+    });
+
+  } catch (err) {
+    console.error("Calendar API error:", err);
+    container.innerText = "Failed to load events.";
+  }
+})();
 </script>
 
 </body>
