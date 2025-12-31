@@ -1,265 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Calendar</title>
+  <meta charset='utf-8' />
+  <!-- 1. Fonts for the "Breezy" look -->
+  <link href="fonts.googleapis.com" rel="stylesheet">
+  
+  <!-- 2. FullCalendar v7 Beta Core & MUI Plugin -->
+  <script src='cdn.jsdelivr.net'></script>
+  <script src='cdn.jsdelivr.net'></script>
+  <!-- v7 MUI Plugin: Bridges FullCalendar with MUI styles -->
+  <script src='cdn.jsdelivr.net'></script>
 
-<!-- =========================
-     FullCalendar v6 (CDN)
-     ========================= -->
-<link
-  href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css"
-  rel="stylesheet"
-/>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
-
-<!-- Google Calendar plugin -->
-<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.15/index.global.min.js"></script>
-
-<style>
-/* =========================
-   BASE PAGE STYLE
-   ========================= */
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #f8fafc;
-}
-
-#calendar {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 1rem;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow:
-    0 1px 2px rgba(0,0,0,.04),
-    0 6px 16px rgba(0,0,0,.06);
-}
-
-/* =========================
-   TOOLBAR / BUTTONS
-   ========================= */
-.fc-button {
-  font-size: 0.75rem;               /* ~25% smaller */
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px !important;
-  font-weight: 500;
-  transition: background-color .15s ease, transform .15s ease;
-}
-
-.fc-button-primary {
-  background: #2563eb;
-  border-color: #2563eb;
-}
-
-.fc-button-primary:hover {
-  background: #1d4ed8;
-  border-color: #1d4ed8;
-  transform: translateY(-1px);
-}
-
-.fc-toolbar-title {
-  font-size: 1.1rem;
-}
-
-/* Hide Month/List buttons on mobile */
-@media (max-width: 900px) {
-  .fc-header-toolbar .fc-toolbar-chunk:last-child {
-    display: none;
-  }
-}
-
-/* =========================
-   MONTH VIEW – MODERN / SHADCN
-   ========================= */
-.fc-theme-standard td,
-.fc-theme-standard th {
-  border-color: #e5e7eb;
-}
-
-/* Weekday header */
-.fc .fc-col-header-cell {
-  background: #f8fafc;
-}
-
-.fc .fc-col-header-cell .fc-col-header-cell-cushion {
-  padding: 0.9rem 0;
-  border-radius: 9999px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
-/* Day cells */
-.fc-daygrid-day-frame {
-  border-radius: 12px;
-  margin: 4px;
-  padding: 6px;
-}
-
-.fc-daygrid-day-number {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #374151;
-}
-
-.fc-day-today {
-  background: #eff6ff !important;
-}
-
-/* Events in month view */
-.fc-event {
-  border-radius: 8px;
-  padding: 2px 6px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-/* =========================
-   LIST VIEW – MODERN CARDS
-   ========================= */
-.fc-list {
-  border: none;
-}
-
-.fc-list-day-cushion {
-  background: transparent;
-  padding: 1.25rem 0 0.75rem;
-  font-weight: 600;
-  color: #111827;
-}
-
-.fc-list-event {
-  position: relative;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  margin-bottom: 1rem;
-  padding: 1.25rem 1.25rem 1.25rem 2.75rem;
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-
-.fc-list-event:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-}
-
-/* Calendar color dot */
-.fc-list-event::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 9999px;
-  background: var(--event-color, #2563eb);
-  position: absolute;
-  top: 1.25rem;
-  left: 1rem;
-}
-
-.fc-list-event-time {
-  font-size: 0.85rem;
-  color: #6b7280;
-  margin-bottom: 0.25rem;
-}
-
-.fc-list-event-title {
-  font-weight: 500;
-  color: #111827;
-}
-</style>
-</head>
-
-<body>
-
-<div id="calendar"></div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const calendarEl = document.getElementById('calendar');
-
-  // Detect mobile at load
-  let lastIsMobile = window.matchMedia('(max-width: 900px)').matches;
-
-  const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: lastIsMobile ? 'listMonth' : 'dayGridMonth',
-
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,listMonth'
-    },
-
-    height: 'auto',
-
-    googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
-
-    eventSources: [
-      {
-        googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com',
-        color: '#2563eb'
-      },
-      {
-        googleCalendarId: 'rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com',
-        color: '#0ea5e9'
-      }
-    ],
-
-    // Switch views ONLY when crossing breakpoint
-    windowResize: function () {
-      const nowMobile = window.matchMedia('(max-width: 900px)').matches;
-
-      if (nowMobile !== lastIsMobile) {
-        calendar.changeView(
-          nowMobile ? 'listMonth' : 'dayGridMonth'
-        );
-        lastIsMobile = nowMobile;
-      }
-    },
-
-visibleRange: function (currentDate) {
-  const start = currentDate;
-  const end = new Date(start);
-  end.setDate(end.getDate() + 15);
-
-  return { start, end };
-},
-
-    // Today / Tomorrow grouping in list view
-    listDayFormat: function (arg) {
-      const today = new Date();
-      const tomorrow = new Date();
-      tomorrow.setDate(today.getDate() + 1);
-
-      if (arg.date.toDateString() === today.toDateString()) {
-        return 'Today';
-      }
-      if (arg.date.toDateString() === tomorrow.toDateString()) {
-        return 'Tomorrow';
-      }
-
-      return arg.date.toLocaleDateString(undefined, {
-        weekday: 'long',
-        month: 'short',
-        day: 'numeric'
-      });
-    },
-
-    // Pass calendar color to list cards
-    eventDidMount: function (info) {
-      if (info.view.type.startsWith('list')) {
-        info.el.style.setProperty(
-          '--event-color',
-          info.event.backgroundColor
-        );
-      }
+  <style>
+    /* 3. "Breezy Blue" Theme Overrides using v7 CSS Variables */
+    :root {
+      --fc-border-color: #e0e6ed;
+      --fc-daygrid-event-dot-width: 8px;
+      --fc-page-bg-color: #ffffff;
+      
+      /* Breezy Blue Palette */
+      --fc-button-bg-color: #1976d2; /* MUI Primary Blue */
+      --fc-button-border-color: #1976d2;
+      --fc-button-hover-bg-color: #1565c0;
+      --fc-button-active-bg-color: #0d47a1;
+      
+      --fc-event-bg-color: #e3f2fd; /* Light Blue background */
+      --fc-event-border-color: #1976d2;
+      --fc-event-text-color: #1565c0;
+      
+      --fc-today-bg-color: #f0f7ff;
     }
-  });
 
-  calendar.render();
-});
-</script>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 20px;
+    }
 
+    #calendar {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft MUI-style shadow */
+    }
+
+    /* Clean up borders for the "Breezy" look */
+    .fc-theme-standard td, .fc-theme-standard th {
+      border: 1px solid var(--fc-border-color);
+    }
+    .fc .fc-toolbar-title {
+      font-weight: 600;
+      color: #334155;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        // Use the MUI theme system introduced in v7
+        themeSystem: 'mui', 
+        initialView: 'dayGridMonth',
+        googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
+        events: {
+          googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com'
+        },
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,listWeek'
+        },
+        // Modern event styling
+        eventDisplay: 'block',
+        eventBackgroundColor: 'var(--fc-event-bg-color)',
+        eventBorderColor: 'var(--fc-event-border-color)',
+        eventTextColor: 'var(--fc-event-text-color)',
+        
+        eventClick: function(info) {
+          info.jsEvent.preventDefault();
+          if (info.event.url) { window.open(info.event.url); }
+        }
+      });
+
+      calendar.render();
+    });
+  </script>
+</head>
+<body>
+  <div id='calendar'></div>
 </body>
 </html>
