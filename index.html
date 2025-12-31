@@ -123,21 +123,7 @@ body {
 }
 
 
-/* =========================
-   MONTH VIEW EVENT TEXT COLORS (CORRECT)
-   ========================= */
 
-/* Timed events (inside day cells) → BLACK */
-.fc-daygrid-day-frame .fc-daygrid-event,
-.fc-daygrid-day-frame .fc-daygrid-event .fc-event-title {
-  color: #000000 !important;
-}
-
-/* All-day events (top all-day row) → WHITE */
-.fc-daygrid-day-events .fc-daygrid-event,
-.fc-daygrid-day-events .fc-daygrid-event .fc-event-title {
-  color: #ffffff !important;
-}
 
 
 </style>
@@ -163,6 +149,20 @@ document.addEventListener('DOMContentLoaded', function () {
     },
 
     height: 'auto',
+	
+eventDidMount: function (info) {
+  // Only affect MONTH view
+  if (info.view.type !== 'dayGridMonth') return;
+
+  // All-day events → white text
+  if (info.event.allDay) {
+    info.el.style.color = '#ffffff';
+  } 
+  // Timed events → black text
+  else {
+    info.el.style.color = '#000000';
+  }
+},
 
     googleCalendarApiKey: "AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s",
 
