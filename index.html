@@ -139,23 +139,18 @@ body {
   color: #202020 !important;
 }
 
-/* =========================
-   ALL-DAY EVENTS: WHITE TEXT
+* =========================
+   ALL-DAY EVENTS ONLY
    ========================= */
 
-/* Month view all-day events */
-.fc-daygrid-event.fc-event {
+/* MONTH VIEW: only all-day row */
+.fc-daygrid-event-harness:not(.fc-daygrid-event-harness-absolute)
+  .fc-daygrid-event {
   color: #ffffff !important;
 }
 
-.fc-daygrid-event.fc-event .fc-event-title {
-  color: #ffffff !important;
-}
-
-/* List view all-day events */
-.fc-list-event.fc-event-all-day,
-.fc-list-event.fc-event-all-day .fc-list-event-title,
-.fc-list-event.fc-event-all-day .fc-list-event-time {
+.fc-daygrid-event-harness:not(.fc-daygrid-event-harness-absolute)
+  .fc-daygrid-event .fc-event-title {
   color: #ffffff !important;
 }
 
