@@ -122,21 +122,21 @@ body {
   font-weight: 500;
 }
 
+
 /* =========================
-   EVENTS: FORCE BLACK TEXT
+   MONTH VIEW EVENT TEXT COLORS (CORRECT)
    ========================= */
 
-/* Month view events */
-.fc-event,
-.fc-event .fc-event-title,
-.fc-event .fc-event-time {
-  color: #202020 !important;
+/* Timed events (inside day cells) → BLACK */
+.fc-daygrid-day-frame .fc-daygrid-event,
+.fc-daygrid-day-frame .fc-daygrid-event .fc-event-title {
+  color: #000000 !important;
 }
 
-/* List view events */
-.fc-list-event-title,
-.fc-list-event-time {
-  color: #202020 !important;
+/* All-day events (top all-day row) → WHITE */
+.fc-daygrid-day-events .fc-daygrid-event,
+.fc-daygrid-day-events .fc-daygrid-event .fc-event-title {
+  color: #ffffff !important;
 }
 
 
