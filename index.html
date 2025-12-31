@@ -62,9 +62,15 @@ body {
 }
 
 /* =========================
-   MOBILE: REMOVE TODAY BUTTON ONLY
+   MOBILE: HIDE VIEW BUTTONS + TODAY
    ========================= */
 @media (max-width: 900px) {
+  /* Hide Month/List buttons */
+  .fc-header-toolbar .fc-toolbar-chunk:last-child {
+    display: none !important;
+  }
+
+  /* Hide Today button */
   .fc-today-button {
     display: none !important;
   }
@@ -84,7 +90,7 @@ body {
 }
 
 .fc .fc-col-header-cell-cushion {
-  padding: 0.9rem 0;   /* THIS is the padding you wanted */
+  padding: 0.9rem 0;   /* Requested weekday padding */
   border-radius: 9999px;
   font-weight: 500;
   letter-spacing: 0.02em;
