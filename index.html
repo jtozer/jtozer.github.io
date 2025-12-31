@@ -165,6 +165,15 @@ eventDidMount: function (info) {
     info.el.style.color = '#202020';
   }
 },
+eventClick: function(info) {
+  // Prevent FullCalendar's default iframe navigation
+  info.jsEvent.preventDefault();
+
+  // Open Google Calendar event in a new tab
+  if (info.event.url) {
+    window.open(info.event.url, '_blank', 'noopener');
+  }
+},
 
     googleCalendarApiKey: "AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s",
 
