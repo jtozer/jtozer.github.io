@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Calendar</title>
 
-<!-- FullCalendar v6 -->
+<!-- =========================
+     FullCalendar v6 (CDN)
+     ========================= -->
 <link
   href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css"
   rel="stylesheet"
@@ -40,7 +42,7 @@ body {
    TOOLBAR / BUTTONS
    ========================= */
 .fc-button {
-  font-size: 0.75rem;                 /* ~25% smaller */
+  font-size: 0.75rem;               /* ~25% smaller */
   padding: 0.25rem 0.5rem;
   border-radius: 6px !important;
   font-weight: 500;
@@ -176,10 +178,12 @@ body {
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const calendarEl = document.getElementById('calendar');
-  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+
+  // Detect mobile at load
+  let lastIsMobile = window.matchMedia('(max-width: 900px)').matches;
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: isMobile ? 'listMonth' : 'dayGridMonth',
+    initialView: lastIsMobile ? 'listMonth' : 'dayGridMonth',
 
     headerToolbar: {
       left: 'prev,next today',
@@ -202,26 +206,30 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     ],
 
-    /* Auto-switch on resize */
-   let lastIsMobile = isMobile;
+    // Switch views ONLY when crossing breakpoint
+    windowResize: function () {
+      const nowMobile = window.matchMedia('(max-width: 900px)').matches;
 
-windowResize: function () {
-  const nowMobile = window.matchMedia('(max-width: 900px)').matches;
+      if (nowMobile !== lastIsMobile) {
+        calendar.changeView(
+          nowMobile ? 'listMonth' : 'dayGridMonth'
+        );
+        lastIsMobile = nowMobile;
+      }
+    },
 
-  if (nowMobile !== lastIsMobile) {
-    calendar.changeView(nowMobile ? 'listMonth' : 'dayGridMonth');
-    lastIsMobile = nowMobile;
-  }
-},
-
-    /* Today / Tomorrow grouping */
+    // Today / Tomorrow grouping in list view
     listDayFormat: function (arg) {
       const today = new Date();
       const tomorrow = new Date();
       tomorrow.setDate(today.getDate() + 1);
 
-      if (arg.date.toDateString() === today.toDateString()) return 'Today';
-      if (arg.date.toDateString() === tomorrow.toDateString()) return 'Tomorrow';
+      if (arg.date.toDateString() === today.toDateString()) {
+        return 'Today';
+      }
+      if (arg.date.toDateString() === tomorrow.toDateString()) {
+        return 'Tomorrow';
+      }
 
       return arg.date.toLocaleDateString(undefined, {
         weekday: 'long',
@@ -230,7 +238,7 @@ windowResize: function () {
       });
     },
 
-    /* Pass calendar color to list cards */
+    // Pass calendar color to list cards
     eventDidMount: function (info) {
       if (info.view.type.startsWith('list')) {
         info.el.style.setProperty(
