@@ -2,88 +2,76 @@
 <html lang='en'>
 <head>
   <meta charset='utf-8' />
-  <!-- 1. Fonts for the "Breezy" look -->
+  <!-- Modern "Breezy" Font -->
   <link href="fonts.googleapis.com" rel="stylesheet">
   
-  <!-- 2. FullCalendar v7 Beta Core & MUI Plugin -->
+  <!-- FullCalendar v7 Beta Global Bundle (Everything included) -->
   <script src='cdn.jsdelivr.net'></script>
-  <script src='cdn.jsdelivr.net'></script>
-  <!-- v7 MUI Plugin: Bridges FullCalendar with MUI styles -->
+  <!-- Google Calendar Plugin for v7 -->
   <script src='cdn.jsdelivr.net'></script>
 
   <style>
-    /* 3. "Breezy Blue" Theme Overrides using v7 CSS Variables */
+    /* FullCalendar v7 uses CSS variables for easy theming */
     :root {
-      --fc-border-color: #e0e6ed;
-      --fc-daygrid-event-dot-width: 8px;
-      --fc-page-bg-color: #ffffff;
-      
-      /* Breezy Blue Palette */
-      --fc-button-bg-color: #1976d2; /* MUI Primary Blue */
+      /* MUI-style Blue Colors */
+      --fc-button-bg-color: #1976d2;
       --fc-button-border-color: #1976d2;
       --fc-button-hover-bg-color: #1565c0;
       --fc-button-active-bg-color: #0d47a1;
       
-      --fc-event-bg-color: #e3f2fd; /* Light Blue background */
+      --fc-event-bg-color: #e3f2fd;
       --fc-event-border-color: #1976d2;
       --fc-event-text-color: #1565c0;
       
       --fc-today-bg-color: #f0f7ff;
+      --fc-border-color: #e2e8f0;
     }
 
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f8fafc;
-      margin: 0;
+      background-color: #f1f5f9;
       padding: 20px;
     }
 
     #calendar {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft MUI-style shadow */
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* Breezy Shadow */
     }
 
-    /* Clean up borders for the "Breezy" look */
-    .fc-theme-standard td, .fc-theme-standard th {
-      border: 1px solid var(--fc-border-color);
-    }
-    .fc .fc-toolbar-title {
-      font-weight: 600;
-      color: #334155;
-    }
+    /* Modernize Toolbar */
+    .fc .fc-toolbar-title { font-size: 1.5em; font-weight: 600; color: #1e293b; }
+    .fc .fc-button { text-transform: capitalize; border-radius: 8px; font-weight: 500; }
   </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
-
+      
+      // Use the global namespace in v7
       var calendar = new FullCalendar.Calendar(calendarEl, {
-        // Use the MUI theme system introduced in v7
-        themeSystem: 'mui', 
         initialView: 'dayGridMonth',
+        // DO NOT set themeSystem: 'mui' if using simple HTML/CDN
+        themeSystem: 'standard', 
+        
         googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
         events: {
           googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com'
         },
+        
         headerToolbar: {
           left: 'prev,next today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,listWeek'
         },
-        // Modern event styling
-        eventDisplay: 'block',
-        eventBackgroundColor: 'var(--fc-event-bg-color)',
-        eventBorderColor: 'var(--fc-event-border-color)',
-        eventTextColor: 'var(--fc-event-text-color)',
         
-        eventClick: function(info) {
-          info.jsEvent.preventDefault();
-          if (info.event.url) { window.open(info.event.url); }
-        }
+        // Final layout polish
+        height: 'auto',
+        eventDisplay: 'block',
+        aspectRatio: 1.5
       });
 
       calendar.render();
