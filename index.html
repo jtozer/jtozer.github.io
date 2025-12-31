@@ -168,12 +168,14 @@ eventDidMount: function (info) {
   }
 },
 eventClick: function(info) {
-  // Prevent FullCalendar's default iframe navigation
   info.jsEvent.preventDefault();
 
-  // Open Google Calendar event in a new tab
   if (info.event.url) {
-    window.open(info.event.url, '_blank', 'noopener');
+    window.open(
+      info.event.url,
+      'gcal-event',
+      'width=600,height=650,noopener'
+    );
   }
 },
 
