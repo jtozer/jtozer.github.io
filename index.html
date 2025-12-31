@@ -29,6 +29,22 @@ body {
   background: #ffffff;
   border-radius: 12px;
 }
+
+/* =========================
+   MOBILE: FORCE LIST + HIDE BUTTONS
+   ========================= */
+@media (max-width: 900px) {
+  /* Hide Month/List buttons */
+  .fc-header-toolbar .fc-toolbar-chunk:last-child {
+    display: none;
+  }
+
+  /* Hide Today button */
+  .fc-today-button {
+    display: none;
+  }
+}
+
 </style>
 </head>
 
@@ -41,7 +57,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const calendarEl = document.getElementById('calendar');
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: 'dayGridMonth',
+    initialView: window.matchMedia('(max-width: 900px)').matches
+  ? 'listMonth'
+  : 'dayGridMonth',
 
     headerToolbar: {
       left: 'prev,next today',
