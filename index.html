@@ -122,6 +122,68 @@ body {
   font-weight: 500;
 }
 
+/* =========================
+   EVENT POPUP MODAL
+   ========================= */
+.event-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.event-modal-content {
+  background: #ffffff;
+  border-radius: 16px;
+  max-width: 420px;
+  width: calc(100% - 2rem);
+  padding: 1.5rem;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.event-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.event-modal-close:hover {
+  color: #111827;
+}
+
+.event-datetime {
+  font-size: 0.9rem;
+  color: #374151;
+  margin: 0.5rem 0 1rem;
+}
+
+.event-description {
+  font-size: 0.9rem;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.event-link {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.event-link:hover {
+  text-decoration: underline;
+}
 
 
 
@@ -134,6 +196,23 @@ body {
 
 
 <div id="calendar"></div>
+
+<!-- Event Popup Modal -->
+<div id="event-modal" class="event-modal" hidden>
+  <div class="event-modal-content">
+    <button class="event-modal-close" aria-label="Close">&times;</button>
+
+    <h3 id="event-title"></h3>
+    <p id="event-datetime" class="event-datetime"></p>
+
+    <p id="event-description" class="event-description"></p>
+
+    <a id="event-link" target="_blank" rel="noopener" class="event-link">
+      View in Google Calendar
+    </a>
+  </div>
+</div>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -166,14 +245,45 @@ eventDidMount: function (info) {
   }
 },
 eventClick: function(info) {
-  // Prevent FullCalendar's default iframe navigation
   info.jsEvent.preventDefault();
 
-  // Open Google Calendar event in a new tab
-  if (info.event.url) {
-    window.open(info.event.url, '_blank', 'noopener');
+  const modal = document.getElementById('event-modal');
+
+  // Title
+  document.getElementById('event-title').textContent =
+    info.event.title || '';
+
+  // Date / time
+  const start = info.event.start;
+  const end = info.event.end;
+
+  let dateText = '';
+  if (info.event.allDay) {
+    dateText = start.toLocaleDateString();
+  } else {
+    dateText =
+      start.toLocaleDateString() + ' ' +
+      start.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
   }
+
+  document.getElementById('event-datetime').textContent = dateText;
+
+  // Description (Google Calendar puts it in extendedProps)
+  const description = info.event.extendedProps.description || '';
+  document.getElementById('event-description').textContent = description;
+
+  // Google Calendar link
+  const link = document.getElementById('event-link');
+  if (info.event.url) {
+    link.href = info.event.url;
+    link.style.display = 'inline-block';
+  } else {
+    link.style.display = 'none';
+  }
+
+  modal.hidden = false;
 },
+
 
     googleCalendarApiKey: "AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s",
 
