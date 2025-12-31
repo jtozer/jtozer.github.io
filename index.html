@@ -218,6 +218,14 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     },
 
+visibleRange: function (currentDate) {
+  const start = currentDate;
+  const end = new Date(start);
+  end.setDate(end.getDate() + 15);
+
+  return { start, end };
+},
+
     // Today / Tomorrow grouping in list view
     listDayFormat: function (arg) {
       const today = new Date();
