@@ -44,7 +44,6 @@ body {
   padding: 0.25rem 0.55rem;
   border-radius: 8px !important;
   font-weight: 500;
-  transition: background-color .15s ease, transform .15s ease;
 }
 
 .fc-button-primary {
@@ -55,7 +54,6 @@ body {
 .fc-button-primary:hover {
   background: #1d4ed8;
   border-color: #1d4ed8;
-  transform: translateY(-1px);
 }
 
 .fc-toolbar-title {
@@ -64,30 +62,29 @@ body {
 }
 
 /* =========================
-   MOBILE: HIDE BUTTONS
+   MOBILE: REMOVE TODAY BUTTON ONLY
    ========================= */
 @media (max-width: 900px) {
-  .fc-header-toolbar .fc-toolbar-chunk:last-child,
   .fc-today-button {
     display: none !important;
   }
 }
 
 /* =========================
-   MONTH VIEW – BREEZY / SHADCN
+   MONTH VIEW – WEEKDAY PADDING
    ========================= */
 .fc-theme-standard td,
 .fc-theme-standard th {
   border-color: #e5e7eb;
 }
 
-/* Weekday header row (THIS WAS MISSING BEFORE) */
+/* Weekday header row */
 .fc .fc-col-header-cell {
   background: transparent;
 }
 
 .fc .fc-col-header-cell-cushion {
-  padding: 0.9rem 0;              /* REAL vertical padding */
+  padding: 0.9rem 0;   /* THIS is the padding you wanted */
   border-radius: 9999px;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -117,58 +114,6 @@ body {
   padding: 2px 6px;
   font-size: 0.75rem;
   font-weight: 500;
-}
-
-/* =========================
-   LIST VIEW – BREEZY CARDS
-   ========================= */
-.fc-list {
-  border: none;
-}
-
-.fc-list-day-cushion {
-  padding: 1.25rem 0 0.75rem;
-  font-weight: 600;
-  color: #111827;
-}
-
-.fc-list-event {
-  position: relative;
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  margin-bottom: 1rem;
-  padding: 1.25rem 1.25rem 1.25rem 2.75rem;
-  background: #ffffff;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-
-.fc-list-event:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
-
-/* Calendar color dot */
-.fc-list-event::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 9999px;
-  background: var(--event-color, #2563eb);
-  position: absolute;
-  top: 1.35rem;
-  left: 1.1rem;
-}
-
-.fc-list-event-time {
-  font-size: 0.85rem;
-  color: #6b7280;
-  margin-bottom: 0.25rem;
-}
-
-.fc-list-event-title {
-  font-weight: 500;
-  color: #111827;
 }
 </style>
 </head>
@@ -205,16 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
         googleCalendarId: "rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com",
         color: "#0ea5e9"
       }
-    ],
-
-    eventDidMount: function (info) {
-      if (info.view.type.startsWith('list')) {
-        info.el.style.setProperty(
-          '--event-color',
-          info.event.backgroundColor
-        );
-      }
-    }
+    ]
   });
 
   calendar.render();
