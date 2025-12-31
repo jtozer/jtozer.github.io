@@ -1,50 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Calendar</title>
 
-<!-- FullCalendar v6 GLOBAL bundle (includes dayGrid + list) -->
+<!-- FullCalendar v6 GLOBAL bundle -->
 <link
   href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css"
   rel="stylesheet"
 />
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
-<!-- Google Calendar plugin (ONLY extra script allowed) -->
+<!-- Google Calendar plugin -->
 <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@6.1.15/index.global.min.js"></script>
 
 <style>
+/* =========================
+   BASE / BREEZY FEEL
+   ========================= */
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: #f8fafc;
 }
 
 #calendar {
   max-width: 1100px;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 1.25rem;
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 18px;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.04),
+    0 8px 24px rgba(0,0,0,.06);
 }
 
 /* =========================
-   MOBILE: FORCE LIST + HIDE BUTTONS
+   TOOLBAR (DESKTOP)
+   ========================= */
+.fc-button {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 8px !important;
+  font-weight: 500;
+  transition: background-color .15s ease, transform .15s ease;
+}
+
+.fc-button-primary {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.fc-button-primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.fc-toolbar-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* =========================
+   MOBILE: HIDE BUTTONS
    ========================= */
 @media (max-width: 900px) {
-  /* Hide Month/List buttons */
-  .fc-header-toolbar .fc-toolbar-chunk:last-child {
-    display: none;
-  }
-
-  /* Hide Today button */
+  .fc-header-toolbar .fc-toolbar-chunk:last-child,
   .fc-today-button {
-    display: none;
+    display: none !important;
   }
 }
 
+/* =========================
+   MONTH VIEW – BREEZY / SHADCN
+   ========================= */
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: #e5e7eb;
+}
+
+/* Weekday header row (THIS WAS MISSING BEFORE) */
+.fc .fc-col-header-cell {
+  background: transparent;
+}
+
+.fc .fc-col-header-cell-cushion {
+  padding: 0.9rem 0;              /* REAL vertical padding */
+  border-radius: 9999px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #374151;
+}
+
+/* Day cells */
+.fc-daygrid-day-frame {
+  border-radius: 14px;
+  margin: 4px;
+  padding: 8px;
+}
+
+.fc-daygrid-day-number {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.fc-day-today {
+  background: #eff6ff !important;
+}
+
+/* Events in month view */
+.fc-event {
+  border-radius: 10px;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* =========================
+   LIST VIEW – BREEZY CARDS
+   ========================= */
+.fc-list {
+  border: none;
+}
+
+.fc-list-day-cushion {
+  padding: 1.25rem 0 0.75rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.fc-list-event {
+  position: relative;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  padding: 1.25rem 1.25rem 1.25rem 2.75rem;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.fc-list-event:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* Calendar color dot */
+.fc-list-event::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--event-color, #2563eb);
+  position: absolute;
+  top: 1.35rem;
+  left: 1.1rem;
+}
+
+.fc-list-event-time {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.fc-list-event-title {
+  font-weight: 500;
+  color: #111827;
+}
 </style>
 </head>
 
@@ -56,10 +181,10 @@ body {
 document.addEventListener('DOMContentLoaded', function () {
   const calendarEl = document.getElementById('calendar');
 
+  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+
   const calendar = new FullCalendar.Calendar(calendarEl, {
-    initialView: window.matchMedia('(max-width: 900px)').matches
-  ? 'listMonth'
-  : 'dayGridMonth',
+    initialView: isMobile ? 'listMonth' : 'dayGridMonth',
 
     headerToolbar: {
       left: 'prev,next today',
@@ -69,18 +194,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     height: 'auto',
 
-    googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
+    googleCalendarApiKey: "AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s",
 
     eventSources: [
       {
-        googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com',
-        color: '#2563eb'
+        googleCalendarId: "rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com",
+        color: "#2563eb"
       },
       {
-        googleCalendarId: 'rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com',
-        color: '#0ea5e9'
+        googleCalendarId: "rsu71.org_hnsg2bqvh3ltdho31v4l0cumdo@group.calendar.google.com",
+        color: "#0ea5e9"
       }
-    ]
+    ],
+
+    eventDidMount: function (info) {
+      if (info.view.type.startsWith('list')) {
+        info.el.style.setProperty(
+          '--event-color',
+          info.event.backgroundColor
+        );
+      }
+    }
   });
 
   calendar.render();
