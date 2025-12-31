@@ -2,19 +2,20 @@
 <html lang='en'>
 <head>
   <meta charset='utf-8' />
-  <!-- Modern "Breezy" Font -->
+  <!-- 1. Google Font for Breezy Aesthetic -->
   <link href="fonts.googleapis.com" rel="stylesheet">
   
-  <!-- FullCalendar v7 Beta Global Bundle (Everything included) -->
+  <!-- 2. Reliable v7 RC Global Bundle -->
   <script src='cdn.jsdelivr.net'></script>
-  <!-- Google Calendar Plugin for v7 -->
+  
+  <!-- 3. Google Calendar Plugin (using stable v6 for compatibility if v7 is missing) -->
   <script src='cdn.jsdelivr.net'></script>
 
   <style>
-    /* FullCalendar v7 uses CSS variables for easy theming */
+    /* 4. Breezy Blue MUI Styling via v7 CSS Variables */
     :root {
-      /* MUI-style Blue Colors */
-      --fc-button-bg-color: #1976d2;
+      --fc-border-color: #e2e8f0;
+      --fc-button-bg-color: #1976d2; /* MUI Primary Blue */
       --fc-button-border-color: #1976d2;
       --fc-button-hover-bg-color: #1565c0;
       --fc-button-active-bg-color: #0d47a1;
@@ -23,8 +24,7 @@
       --fc-event-border-color: #1976d2;
       --fc-event-text-color: #1565c0;
       
-      --fc-today-bg-color: #f0f7ff;
-      --fc-border-color: #e2e8f0;
+      --fc-today-bg-color: #f8fafc;
     }
 
     body {
@@ -36,42 +36,38 @@
     #calendar {
       max-width: 1000px;
       margin: 0 auto;
-      background: #ffffff;
-      padding: 25px;
+      background: white;
+      padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); /* Breezy Shadow */
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
     }
 
-    /* Modernize Toolbar */
-    .fc .fc-toolbar-title { font-size: 1.5em; font-weight: 600; color: #1e293b; }
-    .fc .fc-button { text-transform: capitalize; border-radius: 8px; font-weight: 500; }
+    /* Styling adjustments for the "Breezy" feel */
+    .fc .fc-toolbar-title { font-weight: 600; color: #334155; }
+    .fc .fc-button { border-radius: 8px; text-transform: capitalize; padding: 8px 16px; }
   </style>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
-      
-      // Use the global namespace in v7
+
+      // The global variable 'FullCalendar' is provided by the index.global script above
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-        // DO NOT set themeSystem: 'mui' if using simple HTML/CDN
-        themeSystem: 'standard', 
-        
-        googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
-        events: {
-          googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com'
-        },
-        
         headerToolbar: {
           left: 'prev,next today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,listWeek'
         },
-        
-        // Final layout polish
-        height: 'auto',
+        // Integration
+        googleCalendarApiKey: 'AIzaSyDEbbCS2arYff3R6R3DFauebrue7byAw7s',
+        events: {
+          googleCalendarId: 'rsu71.org_a9c3db3dl1vnteoc09tnm5r42c@group.calendar.google.com'
+        },
+        // Modern display options
         eventDisplay: 'block',
-        aspectRatio: 1.5
+        height: 'auto',
+        aspectRatio: 1.8
       });
 
       calendar.render();
